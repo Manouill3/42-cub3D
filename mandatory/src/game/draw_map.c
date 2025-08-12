@@ -1,0 +1,48 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/12 14:06:03 by mdegache          #+#    #+#             */
+/*   Updated: 2025/08/12 14:46:28 by mdegache         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/includes.h"
+
+void	draw_free_square(t_cub *cub)
+{
+	cub->win->win_y = 0;
+	while (cub->win->win_y < 8)
+	{
+		cub->win->win_x = 0;
+		while (cub->win->win_x < 8)
+		{
+			mlx_pixel_put(cub->mlx, cub->win->window, cub->win->win_x + cub->win->x * 8, cub->win->win_y + cub->win->y * 8, color(0x00FF00FF));
+			cub->win->win_x++;
+		}
+		cub->win->win_y++;
+	}
+}
+
+void	draw_square(t_cub *cub)
+{
+	if (cub->map->map[cub->win->y][cub->win->x] == '1')
+	{
+		cub->win->win_y = 0;
+		while (cub->win->win_y < 8)
+		{
+			cub->win->win_x = 0;
+			while (cub->win->win_x < 8)
+			{
+				mlx_pixel_put(cub->mlx, cub->win->window, cub->win->win_x + cub->win->x * 8, cub->win->win_y + cub->win->y * 8, color(0xFFFFFFFF));
+				cub->win->win_x++;
+			}
+			cub->win->win_y++;
+		}
+	}
+	if (cub->map->map[cub->win->y][cub->win->x] == '0' || cub->map->map[cub->win->y][cub->win->x] == 'N' || cub->map->map[cub->win->y][cub->win->x] == 'S' || cub->map->map[cub->win->y][cub->win->x] == 'E' || cub->map->map[cub->win->y][cub->win->x] == 'W')
+		draw_free_square(cub);
+}

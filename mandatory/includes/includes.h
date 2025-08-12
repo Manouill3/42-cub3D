@@ -1,0 +1,125 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   includes.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/09 06:10:33 by mdegache          #+#    #+#             */
+/*   Updated: 2025/08/12 14:44:46 by mdegache         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef INCLUDES_H
+# define INCLUDES_H
+
+# define FOV 60
+# define HEIGHT 720
+# define WIDTH 1280
+# define PI 3.14159265
+# define BUFFER_SIZE 42
+
+# include <math.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include "libft/libft.h"
+# include "MacroLibX/includes/mlx.h"
+# include "MacroLibX/includes/mlx_profile.h"
+# include "MacroLibX/includes/mlx_extended.h"
+# include "struct.h"
+
+// main.c //
+
+int		    check_ext(char *file, char *ext);
+int         init_more(t_cub  *cub);
+int		    ft_init(t_cub **cub);
+
+//// game ////
+
+// cub3d.c //
+
+void        ft_draw_player(t_cub *cub);
+void        ft_draw_map(t_cub *cub);
+void	    get_player_angle(t_cub *cub);
+void        init_win(t_cub *cub);
+void        cub3d(t_cub *cub);
+
+// draw_map.c //
+
+void	    draw_free_square(t_cub *cub);
+void	    draw_square(t_cub *cub);
+
+//// parsing ////
+
+// parsing.c //
+
+char	    *ft_copytab(char **map);
+int	        ft_map_tab(t_cub *cub, char *tab);
+int		    ft_transfer_map(t_cub *cub, char *tab);
+int	        verif_character_map(char **map_tmp, t_cub *cub);
+int		    ft_parsing(char **map, t_cub *cub);
+
+// parsing map.c //
+
+int	        strlen_line(char **map);
+int	        flood_fill(char **cub, int x, int y, int status);
+
+//// utils ////
+
+// color.c //
+
+mlx_color   color(uint32_t color);
+
+// get_next_line.c //
+
+char	    *ft_select_line(char *all);
+char	    *ft_select_rest(char *all);
+char    	*ft_read_line(int fd, char *buf, char *stat);
+char	    *get_next_line(int fd);
+
+// utils_parsing.c //
+
+int         ft_strlen_map(char *str);
+int         ft_charac_accetable(char str, t_cub *cub, int x, int y);
+int         ft_error_charac(t_cub *cub);
+char        **ft_strcopy(char **str, t_cub *cub);
+
+//// free ////
+
+// ft_free.c //
+
+void        ft_free(char **str);
+void	    ft_destroy(t_cub *cub);
+void	    free_all(t_cub *cub);
+
+//// window ////
+
+// events.c //
+
+void        move_right(t_cub *cub);
+void        move_left(t_cub *cub);
+void        move_backward(t_cub *cub);
+void        move_forward(t_cub *cub);
+void        move(t_cub *cub);
+void        handle_key_up(int keycode, void *param);
+void        events(t_cub *cub);
+
+// keybord.c //
+
+void        event_window(int event, void *param);
+void        handle_key(int keycode, void *param);
+
+// raycast.c //
+
+void        get_texture2(t_cub *cub, int i);
+void        get_texture1(t_cub *cub, int i);
+void        get_dist(t_cub *cub, int i);
+void        get_ray_sup(t_cub *cub);
+void        sky_and_ground(t_cub *cub, int i);
+void        get_data(t_cub *cub, int i);
+void        get_ray(t_cub *cub, int i);
+void	    raycast(void *param);
+
+#endif
