@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 10:13:54 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/13 13:09:36 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/13 16:43:28 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,16 +114,4 @@ void handle_key_up(int keycode, void *param)
     if (26 == keycode)
         cub->key[26] = 0;
     return ;
-}
-
-void    events(t_cub *cub)
-{
-    cub->player->arrow_left = 0;
-    cub->player->arrow_right = 0;
-    mlx_on_event(cub->mlx, cub->win->window, MLX_KEYDOWN, handle_key, (void *)cub);
-    mlx_on_event(cub->mlx, cub->win->window, MLX_KEYUP, handle_key_up, (void *)cub);
-    mlx_on_event(cub->mlx, cub->win->window, MLX_WINDOW_EVENT, event_window, (void *)cub);
-    mlx_add_loop_hook(cub->mlx, raycast, cub);
-    mlx_set_fps_goal(cub->mlx, 70);
-    mlx_loop(cub->mlx);
 }

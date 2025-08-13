@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:10:33 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/12 14:44:46 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/13 16:44:23 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ int	        flood_fill(char **cub, int x, int y, int status);
 // color.c //
 
 mlx_color   color(uint32_t color);
+void        init_ray(t_ray *ray);
+void	    get_ray_side(t_cub *cub);
+void        events(t_cub *cub);
 
 // get_next_line.c //
 
@@ -104,7 +107,6 @@ void        move_backward(t_cub *cub);
 void        move_forward(t_cub *cub);
 void        move(t_cub *cub);
 void        handle_key_up(int keycode, void *param);
-void        events(t_cub *cub);
 
 // keybord.c //
 
@@ -113,13 +115,21 @@ void        handle_key(int keycode, void *param);
 
 // raycast.c //
 
-void        get_texture2(t_cub *cub, int i);
-void        get_texture1(t_cub *cub, int i);
-void        get_dist(t_cub *cub, int i);
+
 void        get_ray_sup(t_cub *cub);
 void        sky_and_ground(t_cub *cub, int i);
 void        get_data(t_cub *cub, int i);
 void        get_ray(t_cub *cub, int i);
 void	    raycast(void *param);
+
+
+// Texture.c //
+
+void        get_texture_north(t_cub *cub, int i);
+void        get_texture_east(t_cub *cub, int i);
+void        get_texture2(t_cub *cub, int i);
+void        get_texture1(t_cub *cub, int i);
+void        get_dist(t_cub *cub, int i);
+
 
 #endif

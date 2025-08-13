@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:10:05 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/12 14:00:41 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/13 14:34:17 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ typedef struct s_ray
 	float	wall_y;
 	float	tex_x;
 	float	tex_y;
+    float 	text_step;
+    float 	text_start;
+    float 	text_pos;
 	mlx_color pixel_color;
 }	t_ray;
 
