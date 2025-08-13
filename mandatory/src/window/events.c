@@ -12,79 +12,79 @@
 
 #include "../../includes/includes.h"
 
-void    move_right(t_cub *cub)
+void	move_right(t_cub *cub)
 {
-    float   cosx;
-    float   siny;
-    float   tmp_x;
-    float   tmp_y;
+	float	cosx;
+	float	siny;
+	float	tmp_x;
+	float	tmp_y;
 
-    cosx = cos(((cub->player->angle + 90) % 360) * (PI / 180)) * 0.1;
+	cosx = cos(((cub->player->angle + 90) % 360) * (PI / 180)) * 0.1;
 	siny = sin(((cub->player->angle + 90) % 360) * (PI / 180)) * 0.1;
-    tmp_x = cub->player->pos_x + cosx;
-    tmp_y = cub->player->pos_y + siny;
-    if (cub->map->map[(int)tmp_y][(int)tmp_x] != '1')
-    {
-        cub->player->pos_y += siny;
-        cub->player->pos_x += cosx;    
-    }
+	tmp_x = cub->player->pos_x + cosx;
+	tmp_y = cub->player->pos_y + siny;
+	if (cub->map->map[(int)tmp_y][(int)tmp_x] != '1')
+	{
+		cub->player->pos_y += siny;
+		cub->player->pos_x += cosx;
+	}
 }
 
-void    move_left(t_cub *cub)
+void	move_left(t_cub *cub)
 {
-    float   cosx;
-    float   siny;
-    float   tmp_x;
-    float   tmp_y;
+	float	cosx;
+	float	siny;
+	float	tmp_x;
+	float	tmp_y;
 
-    cosx = cos(((cub->player->angle + 90) % 360) * (PI / 180)) * 0.1;
+	cosx = cos(((cub->player->angle + 90) % 360) * (PI / 180)) * 0.1;
 	siny = sin(((cub->player->angle + 90) % 360) * (PI / 180)) * 0.1;
-    tmp_x = cub->player->pos_x - cosx;
-    tmp_y = cub->player->pos_y - siny;
-    if (cub->map->map[(int)tmp_y][(int)tmp_x] != '1')
-    {
-        cub->player->pos_y -= siny;
-        cub->player->pos_x -= cosx;    
-    }
+	tmp_x = cub->player->pos_x - cosx;
+	tmp_y = cub->player->pos_y - siny;
+	if (cub->map->map[(int)tmp_y][(int)tmp_x] != '1')
+	{
+		cub->player->pos_y -= siny;
+		cub->player->pos_x -= cosx;
+	}
 }
 
-void    move_backward(t_cub *cub)
+void	move_backward(t_cub *cub)
 {
-    float   cosx;
-    float   siny;
-    float   tmp_x;
-    float   tmp_y;
+	float	cosx;
+	float	siny;
+	float	tmp_x;
+	float	tmp_y;
 
-    cosx = cos((cub->player->angle % 360) * (PI / 180)) * 0.1;
+	cosx = cos((cub->player->angle % 360) * (PI / 180)) * 0.1;
 	siny = sin((cub->player->angle % 360) * (PI / 180)) * 0.1;
-    tmp_x = cub->player->pos_x - cosx;
-    tmp_y = cub->player->pos_y - siny;
-    if (cub->map->map[(int)tmp_y][(int)tmp_x] != '1')
-    {
-        cub->player->pos_y -= siny;
-        cub->player->pos_x -= cosx;    
-    }
+	tmp_x = cub->player->pos_x - cosx;
+	tmp_y = cub->player->pos_y - siny;
+	if (cub->map->map[(int)tmp_y][(int)tmp_x] != '1')
+	{
+		cub->player->pos_y -= siny;
+		cub->player->pos_x -= cosx;
+	}
 }
 
-void    move_forward(t_cub *cub)
+void	move_forward(t_cub *cub)
 {
-    float   cosx;
-    float   siny;
-    float   tmp_x;
-    float   tmp_y;
+	float	cosx;
+	float	siny;
+	float	tmp_x;
+	float	tmp_y;
 
-    cosx = cos((cub->player->angle % 360) * (PI / 180)) * 0.1;
+	cosx = cos((cub->player->angle % 360) * (PI / 180)) * 0.1;
 	siny = sin((cub->player->angle % 360) * (PI / 180)) * 0.1;
-    tmp_x = cub->player->pos_x + cosx;
-    tmp_y = cub->player->pos_y + siny;
-    if (cub->map->map[(int)tmp_y][(int)tmp_x] != '1')
-    {
-        cub->player->pos_y += siny;
-        cub->player->pos_x += cosx;    
-    }
+	tmp_x = cub->player->pos_x + cosx;
+	tmp_y = cub->player->pos_y + siny;
+	if (cub->map->map[(int)tmp_y][(int)tmp_x] != '1')
+	{
+		cub->player->pos_y += siny;
+		cub->player->pos_x += cosx;
+	}
 }
 
-void    move(t_cub *cub)
+void	move(t_cub *cub)
 {
     if (cub->key[4] == 1)
         move_left(cub);

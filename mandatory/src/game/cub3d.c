@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 07:15:27 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/13 13:19:07 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/13 14:31:42 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,6 @@ void	ft_draw_player(t_cub *cub)
 	}
 }
 
-void	ft_draw_map(t_cub *cub)
-{
-	cub->win->x = 0;
-	cub->win->y = 0;
-	cub->win->win_x = 0;
-	cub->win->win_y = 0;
-	while (cub->map->map[cub->win->y])
-	{
-		cub->win->x = 0;
-		while (cub->map->map[cub->win->y][cub->win->x])
-		{
-			draw_square(cub);
-			cub->win->x++;
-		}
-		cub->win->y++;
-	}
-}
-
 void	get_player_angle(t_cub *cub)
 {
 	if (cub->player->chara == 'N')
@@ -64,33 +46,27 @@ void	get_player_angle(t_cub *cub)
 
 void	init_text(t_cub *cub)
 {
-	cub->img[NORTH] = mlx_new_image_from_file(cub->mlx,"./includes/pictures/me.png", &cub->map->w_n, &cub->map->h_n);
-	if (!cub->img[NORTH] )
-		exit(1);
-	cub->img[SOUTH] = mlx_new_image_from_file(cub->mlx,"./includes/pictures/chat_sud.png", &cub->map->w_s, &cub->map->h_s);
-	if (!cub->img[SOUTH])
-	{
-		ft_destroy(cub);
-		exit(1);
-	}
-	cub->img[EAST] = mlx_new_image_from_file(cub->mlx,"./includes/pictures/chat_est.png", &cub->map->w_e, &cub->map->h_e);
-	if (!cub->img[EAST])
-	{
-		ft_destroy(cub);
-		exit(1);
-	}
-	cub->img[WEST] = mlx_new_image_from_file(cub->mlx,"./includes/pictures/chat_ouest.png", &cub->map->w_o, &cub->map->h_o);
-	if (!cub->img[WEST])
+	cub->img[NORTH] = mlx_new_image_from_file(cub->mlx,
+			"./includes/pictures/me.png", &cub->map->w_n, &cub->map->h_n);
+	cub->img[SOUTH] = mlx_new_image_from_file(cub->mlx,
+			"./includes/pictures/chat_sud.png", &cub->map->w_s, &cub->map->h_s);
+	cub->img[EAST] = mlx_new_image_from_file(cub->mlx,
+			"./includes/pictures/chat_est.png", &cub->map->w_e, &cub->map->h_e);
+	cub->img[WEST] = mlx_new_image_from_file(cub->mlx,
+			"./includes/pictures/chat_ouest.png",
+			&cub->map->w_o, &cub->map->h_o);
+	if (!cub->img[WEST] || !cub->img[EAST]
+		|| !cub->img[NORTH] || !cub->img[SOUTH])
 	{
 		ft_destroy(cub);
 		exit(1);
 	}
 }
 
-void    init_win(t_cub *cub)
+void	init_win(t_cub *cub)
 {
-	mlx_window_create_info info;
-	
+	mlx_window_create_info	info;
+
 	ft_memset(&info, 0, sizeof(info));
 	ft_memset(cub->key, 0, 250);
 	info.title = "Cub3D";
@@ -104,7 +80,7 @@ void    init_win(t_cub *cub)
 	events(cub);
 }
 
-void    cub3d(t_cub *cub)
+void	cub3d(t_cub *cub)
 {
 	cub->mlx = mlx_init();
 	init_win(cub);
