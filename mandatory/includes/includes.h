@@ -50,6 +50,7 @@ void        cub3d(t_cub *cub);
 
 void	    draw_free_square(t_cub *cub);
 void	    draw_square(t_cub *cub);
+void	    sky_ground(t_cub *cub);
 
 //// parsing ////
 
@@ -117,7 +118,6 @@ void        handle_key(int keycode, void *param);
 
 
 void        get_ray_sup(t_cub *cub);
-void        sky_and_ground(t_cub *cub, int i);
 void        get_data(t_cub *cub, int i);
 void        get_ray(t_cub *cub, int i);
 void	    raycast(void *param);

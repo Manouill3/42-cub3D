@@ -72,3 +72,24 @@ void	ft_draw_map(t_cub *cub)
 		cub->win->y++;
 	}
 }
+
+void	sky_ground(t_cub *cub)
+{
+	int x;
+	int y;
+
+	x = 0;
+	while (x < WIDTH)
+	{
+		y = 0;
+		while (y < HEIGHT)
+		{
+			if (y > HEIGHT / 2)
+				mlx_pixel_put(cub->mlx, cub->win->window, x, y, color(0xf1c232FF));
+			else
+				mlx_pixel_put(cub->mlx, cub->win->window, x, y, color(0x00FFFFFF));
+			y++;
+		}
+		x++;
+	}
+}

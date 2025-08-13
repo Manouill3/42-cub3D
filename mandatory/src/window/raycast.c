@@ -32,10 +32,8 @@ void	get_ray_sup(t_cub *cub)
 		cub->ray->dist = (cub->ray->dy - cub->ray->dely);
 }
 
-void	sky_and_ground(t_cub *cub, int i)
+void	call_text(t_cub *cub, int i)
 {
-	int	y;
-
 	get_ray_sup(cub);
 	get_dist(cub, i);
 	cub->ray->save_start_y = cub->ray->start_y;
@@ -43,20 +41,6 @@ void	sky_and_ground(t_cub *cub, int i)
 		get_texture1(cub, i);
 	if (cub->ray->side == 1)
 		get_texture2(cub, i);
-	y = 0;
-	while (y < cub->ray->save_start_y)
-	{
-		mlx_pixel_put(cub->mlx, cub->win->window, i, y, color(0x00FFFFFF));
-		y++;
-	}
-	y = cub->ray->end_y;
-	if (y < 0)
-		y = HEIGHT;
-	while (y < HEIGHT)
-	{
-		mlx_pixel_put(cub->mlx, cub->win->window, i, y, color(0xf1c232FF));
-		y++;
-	}
 }
 
 void	get_data(t_cub *cub, int i)
@@ -99,7 +83,7 @@ void	get_ray(t_cub *cub, int i)
 		cub->ray->dy = (cub->player->pos_y
 				- (float)cub->ray->ray_y) * cub->ray->dely;
 	}
-	sky_and_ground(cub, i);
+	call_text(cub, i);
 }
 
 void	raycast(void *param)
@@ -114,6 +98,7 @@ void	raycast(void *param)
 		cub->player->angle -= 1;
 	if (cub->player->arrow_right)
 		cub->player->angle += 1;
+	sky_ground(cub);
 	while (i < WIDTH)
 	{
 		init_ray(cub->ray);
