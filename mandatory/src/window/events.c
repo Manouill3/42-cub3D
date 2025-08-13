@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 10:13:54 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/13 14:32:42 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/13 16:43:28 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,32 @@ void	move_forward(t_cub *cub)
 
 void	move(t_cub *cub)
 {
-	if (cub->key[4] == 1)
-		move_left(cub);
-	if (cub->key[7] == 1)
-		move_right(cub);
-	if (cub->key[26] == 1)
-		move_forward(cub);
-	if (cub->key[22] == 1)
-		move_backward(cub);
+    if (cub->key[4] == 1)
+        move_left(cub);
+    if (cub->key[7] == 1)
+        move_right(cub);
+    if (cub->key[26] == 1)
+        move_forward(cub);
+    if (cub->key[22] == 1)
+        move_backward(cub);
+}
+
+void handle_key_up(int keycode, void *param)
+{
+    t_cub *cub;
+
+    cub = (t_cub *)param;
+    if (keycode == 79)
+        cub->player->arrow_right = 0;
+    if (keycode == 80)
+        cub->player->arrow_left = 0;
+    if (4 == keycode)
+        cub->key[4] = 0;
+    if (7 == keycode)
+        cub->key[7] = 0;
+    if (22 == keycode)
+        cub->key[22] = 0;
+    if (26 == keycode)
+        cub->key[26] = 0;
+    return ;
 }

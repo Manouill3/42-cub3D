@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+         #
+#    By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 06:04:01 by mdegache          #+#    #+#              #
-#    Updated: 2025/08/12 14:45:45 by mdegache         ###   ########.fr        #
+#    Updated: 2025/08/13 14:29:57 by tcybak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC = 	src/main.c\
 		src/window/Keybord.c\
 		src/window/events.c\
 		src/window/raycast.c\
+		src/window/Texture.c\
 		src/utils/get_next_line.c\
 		src/utils/utils_parsing.c\
 		src/utils/color.c\
