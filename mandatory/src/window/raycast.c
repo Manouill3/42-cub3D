@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 09:40:43 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/12 13:47:26 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/13 13:58:57 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void    get_texture2(t_cub *cub, int i)
         {
             cub->ray->tex_y = (int)(((cub->ray->start_y - cub->ray->save_start_y) * cub->map->h_o) / cub->ray->height);
             cub->ray->pixel_color = mlx_get_image_pixel(cub->mlx, cub->img[WEST], cub->ray->tex_x, cub->ray->tex_y);
-            mlx_pixel_put_region(cub->mlx, cub->win->window, i, cub->ray->start_y, 16, 16 , &cub->ray->pixel_color);
+            mlx_pixel_put(cub->mlx, cub->win->window, i, cub->ray->start_y, cub->ray->pixel_color);
             cub->ray->start_y++;
         }
     }
@@ -34,7 +34,7 @@ void    get_texture2(t_cub *cub, int i)
         {
             cub->ray->tex_y = (int)(((cub->ray->start_y - cub->ray->save_start_y) * cub->map->h_e) / cub->ray->height);
             cub->ray->pixel_color = mlx_get_image_pixel(cub->mlx, cub->img[EAST], cub->ray->tex_x, cub->ray->tex_y);
-            mlx_pixel_put_region(cub->mlx, cub->win->window, i, cub->ray->start_y, 16, 16 , &cub->ray->pixel_color);
+            mlx_pixel_put(cub->mlx, cub->win->window, i, cub->ray->start_y, cub->ray->pixel_color);
             cub->ray->start_y++;
         }
     }
@@ -51,7 +51,7 @@ void    get_texture1(t_cub *cub, int i)
         {
             cub->ray->tex_y = (int)(((cub->ray->start_y - cub->ray->save_start_y) * cub->map->h_s) / cub->ray->height);
             cub->ray->pixel_color = mlx_get_image_pixel(cub->mlx, cub->img[SOUTH], cub->ray->tex_x, cub->ray->tex_y);
-            mlx_pixel_put_region(cub->mlx, cub->win->window, i, cub->ray->start_y, 16, 16 , &cub->ray->pixel_color);
+            mlx_pixel_put(cub->mlx, cub->win->window, i, cub->ray->start_y, cub->ray->pixel_color);
             cub->ray->start_y++;
         }
     }
@@ -62,7 +62,7 @@ void    get_texture1(t_cub *cub, int i)
         {
             cub->ray->tex_y = (int)(((cub->ray->start_y - cub->ray->save_start_y) * cub->map->h_n) / cub->ray->height);
             cub->ray->pixel_color = mlx_get_image_pixel(cub->mlx, cub->img[NORTH], cub->ray->tex_x, cub->ray->tex_y);
-            mlx_pixel_put_region(cub->mlx, cub->win->window, i, cub->ray->start_y, 16,  16, &cub->ray->pixel_color);
+            mlx_pixel_put(cub->mlx, cub->win->window, i, cub->ray->start_y, cub->ray->pixel_color);
             cub->ray->start_y++;
         }
     }
@@ -79,12 +79,13 @@ void    get_dist(t_cub *cub, int i)
     if (cub->ray->start_y < 0)
         cub->ray->start_y = 0;
     cub->ray->end_y = cub->ray->start_y + cub->ray->height;
-    if (cub->ray->end_y > HEIGHT)
-        cub->ray->end_y = HEIGHT - 1;
+    if (cub->ray->end_y > HEIGHT || cub->ray->end_y < 0)
+        cub->ray->end_y = HEIGHT;
 }
 
 void    get_ray_sup(t_cub *cub)
 {
+    cub->ray->side = 0;
     while (1)
     {
         if (cub->ray->ray_y < 0 || cub->ray->ray_x < 0 || cub->ray->ray_y > cub->map->size_ver - 1 || (int)ft_strlen(cub->map->map[cub->ray->ray_y]) < cub->ray->ray_x)
@@ -128,6 +129,8 @@ void    sky_and_ground(t_cub *cub, int i)
         y++;
     }
     y = cub->ray->end_y;
+    if (y < 0)
+        y = HEIGHT;
     while (y < HEIGHT)
     {
         mlx_pixel_put(cub->mlx, cub->win->window, i, y, color(0xf1c232FF));
@@ -171,6 +174,30 @@ void    get_ray(t_cub *cub, int i)
     sky_and_ground(cub, i);
 }
 
+void    init_ray(t_ray *ray)
+{
+    ray->side = 0;
+    ray->ray_x = 0;
+    ray->ray_y = 0;
+    ray->height = 0;
+    ray->cosx = 0;
+    ray->siny = 0;
+    ray->delx = 0;
+    ray->dely = 0;
+    ray->dx = 0;
+    ray->dy = 0;
+    ray->dist = 0;
+    ray->dist_wall = 0;
+    ray->ray_angle = 0;
+    ray->start_y = 0;
+    ray->save_start_y = 0;
+    ray->end_y = 0;
+    ray->wall_x = 0;
+    ray->wall_y = 0;
+    ray->tex_x = 0;
+    ray->tex_y = 0;
+}
+
 void	raycast(void *param)
 {
 	int		i;
@@ -185,6 +212,7 @@ void	raycast(void *param)
 		cub->player->angle += 1;
 	while (i < WIDTH)
     {
+        init_ray(cub->ray);
 		get_ray(cub, i);
         i++;
     }
@@ -192,5 +220,3 @@ void	raycast(void *param)
     ft_draw_player(cub);
 	move(cub);
 }
-
-

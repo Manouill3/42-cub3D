@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 10:13:54 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/12 11:48:33 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/13 13:09:36 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ void    move_left(t_cub *cub)
     float   tmp_x;
     float   tmp_y;
 
-    cosx = cos(((cub->player->angle - 90) % 360) * (PI / 180)) * 0.1;
-	siny = sin(((cub->player->angle - 90) % 360) * (PI / 180)) * 0.1;
-    tmp_x = cub->player->pos_x + cosx;
-    tmp_y = cub->player->pos_y + siny;
+    cosx = cos(((cub->player->angle + 90) % 360) * (PI / 180)) * 0.1;
+	siny = sin(((cub->player->angle + 90) % 360) * (PI / 180)) * 0.1;
+    tmp_x = cub->player->pos_x - cosx;
+    tmp_y = cub->player->pos_y - siny;
     if (cub->map->map[(int)tmp_y][(int)tmp_x] != '1')
     {
-        cub->player->pos_y += siny;
-        cub->player->pos_x += cosx;    
+        cub->player->pos_y -= siny;
+        cub->player->pos_x -= cosx;    
     }
 }
 

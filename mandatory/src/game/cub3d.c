@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 07:15:27 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/12 14:51:25 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/13 13:19:07 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,19 @@ void	ft_draw_player(t_cub *cub)
 
 void	ft_draw_map(t_cub *cub)
 {
-	int	x;
-	int	y;
-
-	y = 0;
-	while (cub->map->map[y])
+	cub->win->x = 0;
+	cub->win->y = 0;
+	cub->win->win_x = 0;
+	cub->win->win_y = 0;
+	while (cub->map->map[cub->win->y])
 	{
-		x = 0;
-		while (cub->map->map[y][x])
+		cub->win->x = 0;
+		while (cub->map->map[cub->win->y][cub->win->x])
 		{
 			draw_square(cub);
-			x++;
+			cub->win->x++;
 		}
-		y++;
+		cub->win->y++;
 	}
 }
 
