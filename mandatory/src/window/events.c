@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 10:13:54 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/13 16:52:03 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/13 16:57:38 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,12 @@ void	move_forward(t_cub *cub)
 
 void	move(t_cub *cub)
 {
-    if (cub->key[4] == 1)
-        move_left(cub);
-    if (cub->key[7] == 1)
-        move_right(cub);
-    if (cub->key[26] == 1)
-        move_forward(cub);
-    if (cub->key[22] == 1)
-        move_backward(cub);
+	if (cub->key[4] == 1)
+		move_left(cub);
+	if (cub->key[7] == 1)
+		move_right(cub);
+	if (cub->key[26] == 1)
+		move_forward(cub);
+	if (cub->key[22] == 1)
+		move_backward(cub);
 }
