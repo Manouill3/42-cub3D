@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 12:31:44 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/12 14:23:45 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/14 15:26:35 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	flood_fill(char **cub, int x, int y, int status)
 {
 	if (status == 1)
 		return (1);
-	if (x < 0 || y < 0 || (int)ft_strlen(cub[y]) <= x
-		|| (int)strlen_line(cub) <= y)
+	if (x < 0 || y < 0 || (int)strlen_line(cub) <= y
+		|| (int)ft_strlen(cub[y]) <= x)
 		return (1);
 	if (cub[y][x] != '0' && cub[y][x] != 'N' && cub[y][x] != 'S' &&
 		cub[y][x] != 'E' && cub[y][x] != 'W')
