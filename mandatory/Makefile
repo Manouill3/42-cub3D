@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+         #
+#    By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 06:04:01 by mdegache          #+#    #+#              #
-#    Updated: 2025/08/13 14:29:57 by tcybak           ###   ########.fr        #
+#    Updated: 2025/08/14 13:30:24 by mdegache         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC = 	src/main.c\
 		src/window/events.c\
 		src/window/raycast.c\
 		src/window/Texture.c\
+		src/window/move.c\
 		src/utils/get_next_line.c\
 		src/utils/utils_parsing.c\
 		src/utils/color.c\

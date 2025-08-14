@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 07:15:27 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/13 14:31:42 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/14 13:24:01 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	ft_draw_player(t_cub *cub)
 	int	win_y;
 
 	win_y = 0;
-	while (win_y < 8)
+	while (win_y < 2)
 	{
 		win_x = 0;
-		while (win_x < 8)
+		while (win_x < 2)
 		{
 			mlx_pixel_put(cub->mlx, cub->win->window,
 				win_x + cub->player->pos_x * 8,

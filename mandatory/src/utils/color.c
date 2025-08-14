@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 12:36:25 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/13 16:53:01 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/14 13:39:14 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ mlx_color	color(uint32_t color)
 	return (c);
 }
 
-void    init_ray(t_ray *ray)
+void	init_ray(t_ray *ray)
 {
 	ray->side = 0;
 	ray->ray_x = 0;

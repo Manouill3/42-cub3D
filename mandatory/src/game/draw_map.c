@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 14:06:03 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/13 14:31:46 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/14 13:38:54 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	ft_draw_map(t_cub *cub)
 
 void	sky_ground(t_cub *cub)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	while (x < WIDTH)
@@ -85,9 +85,11 @@ void	sky_ground(t_cub *cub)
 		while (y < HEIGHT)
 		{
 			if (y > HEIGHT / 2)
-				mlx_pixel_put(cub->mlx, cub->win->window, x, y, color(0xf1c232FF));
+				mlx_pixel_put(cub->mlx, cub->win->window,
+					x, y, color(0xf1c232FF));
 			else
-				mlx_pixel_put(cub->mlx, cub->win->window, x, y, color(0x00FFFFFF));
+				mlx_pixel_put(cub->mlx, cub->win->window,
+					x, y, color(0x00FFFFFF));
 			y++;
 		}
 		x++;

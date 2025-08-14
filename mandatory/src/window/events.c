@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 10:13:54 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/13 16:57:38 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/14 13:20:00 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ void	move_right(t_cub *cub)
 	siny = sin(((cub->player->angle + 90) % 360) * (PI / 180)) * 0.1;
 	tmp_x = cub->player->pos_x + cosx;
 	tmp_y = cub->player->pos_y + siny;
-	if (cub->map->map[(int)tmp_y][(int)tmp_x] != '1')
-	{
-		cub->player->pos_y += siny;
-		cub->player->pos_x += cosx;
-	}
+	apply_position(cub->player, cub->map, tmp_x, tmp_y);
 }
 
 void	move_left(t_cub *cub)
@@ -41,11 +37,7 @@ void	move_left(t_cub *cub)
 	siny = sin(((cub->player->angle + 90) % 360) * (PI / 180)) * 0.1;
 	tmp_x = cub->player->pos_x - cosx;
 	tmp_y = cub->player->pos_y - siny;
-	if (cub->map->map[(int)tmp_y][(int)tmp_x] != '1')
-	{
-		cub->player->pos_y -= siny;
-		cub->player->pos_x -= cosx;
-	}
+	apply_position(cub->player, cub->map, tmp_x, tmp_y);
 }
 
 void	move_backward(t_cub *cub)
@@ -59,11 +51,7 @@ void	move_backward(t_cub *cub)
 	siny = sin((cub->player->angle % 360) * (PI / 180)) * 0.1;
 	tmp_x = cub->player->pos_x - cosx;
 	tmp_y = cub->player->pos_y - siny;
-	if (cub->map->map[(int)tmp_y][(int)tmp_x] != '1')
-	{
-		cub->player->pos_y -= siny;
-		cub->player->pos_x -= cosx;
-	}
+	apply_position(cub->player, cub->map, tmp_x, tmp_y);
 }
 
 void	move_forward(t_cub *cub)
@@ -75,13 +63,9 @@ void	move_forward(t_cub *cub)
 
 	cosx = cos((cub->player->angle % 360) * (PI / 180)) * 0.1;
 	siny = sin((cub->player->angle % 360) * (PI / 180)) * 0.1;
-	tmp_x = cub->player->pos_x + cosx;
-	tmp_y = cub->player->pos_y + siny;
-	if (cub->map->map[(int)tmp_y][(int)tmp_x] != '1')
-	{
-		cub->player->pos_y += siny;
-		cub->player->pos_x += cosx;
-	}
+	tmp_x = cub->player->pos_x + cosx + (0.1f * -(cub->player->angle > 180));
+	tmp_y = cub->player->pos_y + siny + (0.1f * -(cub->player->angle > 180));
+	apply_position(cub->player, cub->map, tmp_x, tmp_y);
 }
 
 void	move(t_cub *cub)

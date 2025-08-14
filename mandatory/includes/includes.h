@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:10:33 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/13 16:44:23 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/14 13:55:00 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int		    ft_init(t_cub **cub);
 // cub3d.c //
 
 void        ft_draw_player(t_cub *cub);
-void        ft_draw_map(t_cub *cub);
 void	    get_player_angle(t_cub *cub);
+void	    init_text(t_cub *cub);
 void        init_win(t_cub *cub);
 void        cub3d(t_cub *cub);
 
@@ -50,6 +50,7 @@ void        cub3d(t_cub *cub);
 
 void	    draw_free_square(t_cub *cub);
 void	    draw_square(t_cub *cub);
+void	    ft_draw_map(t_cub *cub);
 void	    sky_ground(t_cub *cub);
 
 //// parsing ////
@@ -74,7 +75,6 @@ int	        flood_fill(char **cub, int x, int y, int status);
 mlx_color   color(uint32_t color);
 void        init_ray(t_ray *ray);
 void	    get_ray_side(t_cub *cub);
-void        events(t_cub *cub);
 
 // get_next_line.c //
 
@@ -107,17 +107,19 @@ void        move_left(t_cub *cub);
 void        move_backward(t_cub *cub);
 void        move_forward(t_cub *cub);
 void        move(t_cub *cub);
-void        handle_key_up(int keycode, void *param);
 
 // keybord.c //
 
+void	    events(t_cub *cub);
 void        event_window(int event, void *param);
 void        handle_key(int keycode, void *param);
+void	    handle_key_up(int keycode, void *param);
 
 // raycast.c //
 
 
 void        get_ray_sup(t_cub *cub);
+void	    call_text(t_cub *cub, int i);
 void        get_data(t_cub *cub, int i);
 void        get_ray(t_cub *cub, int i);
 void	    raycast(void *param);
@@ -125,11 +127,16 @@ void	    raycast(void *param);
 
 // Texture.c //
 
-void        get_texture_north(t_cub *cub, int i);
 void        get_texture_east(t_cub *cub, int i);
 void        get_texture2(t_cub *cub, int i);
+void        get_texture_north(t_cub *cub, int i);
 void        get_texture1(t_cub *cub, int i);
 void        get_dist(t_cub *cub, int i);
 
+// move.c //
+
+int         check_y(float y, float x, char c, t_map *map);
+int         check_x(float y, float x, char c, t_map *map);
+void        apply_position(t_player *player, t_map *map, float x, float y);
 
 #endif
