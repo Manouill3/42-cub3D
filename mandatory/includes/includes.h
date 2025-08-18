@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tsug <tsug@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:10:33 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/18 15:16:53 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/18 23:00:48 by tsug             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	    sky_ground(t_cub *cub);
 
 int         ft_empty_line(char *line);
 char        *ft_path_picture(char *line);
+void	    only_map(t_cub *cub);
 
 // parsing.c //
 
@@ -82,7 +83,6 @@ mlx_color   color(uint32_t color);
 void        init_ray(t_ray *ray);
 void	    get_ray_side(t_cub *cub);
 int         ft_number_separator(char *str, char s);
-char        *ft_convertisor(int	n, char *base);
 
 // get_next_line.c //
 

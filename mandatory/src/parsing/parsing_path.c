@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tsug <tsug@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 15:13:18 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/18 15:14:30 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/18 23:47:41 by tsug             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	only_map(t_cub *cub)
 	int		count;
 	char	*line;
 	char	**map_tmp;
+	char	*f_path_tmp;
+	char	*c_path_tmp;
 
 	y = 0;
 	count = 0;
@@ -102,57 +104,42 @@ void	only_map(t_cub *cub)
 		}
 		else if (ft_strncmp(line, "F ", 2) == 0)
 		{
-			cub->map->f_path = ft_path_picture(line + 2);
+			f_path_tmp = ft_path_picture(line + 2);
 			y++;
 			count++;
 			continue;
 		}
 		else if (ft_strncmp(line, "C ", 2) == 0)
 		{
-			cub->map->c_path = ft_path_picture(line + 2);
+			c_path_tmp = ft_path_picture(line + 2);
 			y++;
 			count++;
 			continue;
 		}
 		break;
 	}
-	char	**tmp_RGB;
-	int		len_path;
-	int		i = 0;
-	int		size_path;
-	int		tmp_int;
-	if (cub->map->c_path)
+	char	**RGB;
+	int		r;
+	int		g;
+	int		b;
+
+	if (f_path_tmp)
 	{
-		len_path = ft_number_separator(cub->map->c_path, ',');
-		tmp_RGB = ft_calloc(len_path + 1, sizeof(char));
-		tmp_RGB = ft_split(cub->map->c_path, ',');
+		RGB = ft_split(f_path_tmp, ',');
 	}
-	if (cub->map->f_path)
+	if (c_path_tmp)
 	{
-		len_path = ft_number_separator(cub->map->f_path, ',');
-		tmp_RGB = ft_calloc(len_path + 1, sizeof(char));
-		tmp_RGB = ft_split(cub->map->f_path, ',');
-		free(cub->map->f_path);
-		cub->map->f_path = NULL;
-		cub->map->f_path = ft_calloc(10 + 1 , sizeof(char));
-		cub->map->f_path[0] = '0';
-		cub->map->f_path[1] = 'x';
-		size_path = 2;
-		while (tmp_RGB[i])
-		{
-			tmp_int = ft_atoi(tmp_RGB[i]);
-			tmp_RGB[i] = ft_convertisor(tmp_int, "123456789ABCDEF");
-			printf("tmp_RGB[i] === %s\n", tmp_RGB[i]);
-			int	j = 0;
-			while (tmp_RGB[i][j])
-			{
-				cub->map->f_path[size_path] = tmp_RGB[i][j];
-				j++;
-				size_path++;
-			}
-			i++;
-		}
+		RGB = ft_split(c_path_tmp, ',');
+		free(f_path_tmp);
+		f_path_tmp = NULL;
+		if (!RGB || !RGB[0] || !RGB[1] || !RGB[2])
+			return ;
+		r = ft_atoi(RGB[0]);
+		g = ft_atoi(RGB[1]);
+		b = ft_atoi(RGB[2]);
+		cub->map->f_path =  r * 10000 + g * 100 + b;
+		ft_free(RGB);
 	}
-	printf("F = %s\n C = %s\n", cub->map->f_path, cub->map->c_path);
+	printf("cub->map->f_path = %d", cub->map->f_path);
 	ft_new_map(cub, map_tmp, count);
 }

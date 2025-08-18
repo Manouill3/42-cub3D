@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsug <tsug@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 14:06:03 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/14 13:38:54 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/19 00:00:15 by tsug             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,10 @@ void	sky_ground(t_cub *cub)
 	int	y;
 
 	x = 0;
+	if (!cub->map->f_path)
+		cub->map->f_path = 0xf1c232FF;
+	if (!cub->map->c_path)
+		cub->map->c_path = 0x00FFFFFF;
 	while (x < WIDTH)
 	{
 		y = 0;
@@ -86,10 +90,10 @@ void	sky_ground(t_cub *cub)
 		{
 			if (y > HEIGHT / 2)
 				mlx_pixel_put(cub->mlx, cub->win->window,
-					x, y, color(0xf1c232FF));
+					x, y, color(cub->map->f_path));
 			else
 				mlx_pixel_put(cub->mlx, cub->win->window,
-					x, y, color(0x00FFFFFF));
+					x, y, color(cub->map->c_path));
 			y++;
 		}
 		x++;

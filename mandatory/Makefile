@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+         #
+#    By: tsug <tsug@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 06:04:01 by mdegache          #+#    #+#              #
-#    Updated: 2025/08/14 13:30:24 by mdegache         ###   ########.fr        #
+#    Updated: 2025/08/18 21:36:49 by tsug             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC = 	src/main.c\
 		src/game/draw_map.c\
 		src/parsing/parsing.c\
 		src/parsing/parsing_map.c\
+		src/parsing/parsing_path.c\
 		src/window/Keybord.c\
 		src/window/events.c\
 		src/window/raycast.c\
