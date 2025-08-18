@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:10:33 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/14 13:55:00 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/18 15:16:53 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,24 @@ void	    sky_ground(t_cub *cub);
 
 //// parsing ////
 
+// parsing_path.c //
+
+int         ft_empty_line(char *line);
+char        *ft_path_picture(char *line);
+
 // parsing.c //
 
 char	    *ft_copytab(char **map);
 int	        ft_map_tab(t_cub *cub, char *tab);
-int		    ft_transfer_map(t_cub *cub, char *tab);
 int	        verif_character_map(char **map_tmp, t_cub *cub);
+void	    ft_new_map(t_cub *cub, char **map_tmp, int count);
 int		    ft_parsing(char **map, t_cub *cub);
 
 // parsing map.c //
 
 int	        strlen_line(char **map);
 int	        flood_fill(char **cub, int x, int y, int status);
+int	        ft_transfer_map(t_cub *cub, char *tab);
 
 //// utils ////
 
@@ -75,6 +81,8 @@ int	        flood_fill(char **cub, int x, int y, int status);
 mlx_color   color(uint32_t color);
 void        init_ray(t_ray *ray);
 void	    get_ray_side(t_cub *cub);
+int         ft_number_separator(char *str, char s);
+char        *ft_convertisor(int	n, char *base);
 
 // get_next_line.c //
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 12:36:25 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/14 13:39:14 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/18 15:09:19 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,20 @@ void	get_ray_side(t_cub *cub)
 		cub->ray->dx += cub->ray->delx;
 		cub->ray->side = 1;
 	}
+}
+
+int	ft_number_separator(char *str, char s)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == s)
+			count++;
+		i++;
+	}
+	return (count);
 }

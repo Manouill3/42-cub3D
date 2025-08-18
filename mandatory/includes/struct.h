@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsug <tsug@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:10:05 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/18 02:34:41 by tsug             ###   ########.fr       */
+/*   Updated: 2025/08/18 13:45:52 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ typedef struct s_map
 	char		*s_path;
 	char		*e_path;
 	char		*w_path;
+	char		*f_path;
+	char		*c_path;
 	int			w_n;
 	int			h_n;
 	int			w_s;
