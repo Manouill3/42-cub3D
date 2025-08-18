@@ -6,7 +6,7 @@
 /*   By: tsug <tsug@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 15:13:18 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/18 23:47:41 by tsug             ###   ########.fr       */
+/*   Updated: 2025/08/19 00:09:37 by tsug             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	only_map(t_cub *cub)
 	int		count;
 	char	*line;
 	char	**map_tmp;
-	char	*f_path_tmp;
-	char	*c_path_tmp;
+	char	*f_path_tmp = NULL;
+	char	*c_path_tmp = NULL;
 
 	y = 0;
 	count = 0;
@@ -118,7 +118,7 @@ void	only_map(t_cub *cub)
 		}
 		break;
 	}
-	char	**RGB;
+	char	**RGB = NULL;
 	int		r;
 	int		g;
 	int		b;
@@ -126,10 +126,6 @@ void	only_map(t_cub *cub)
 	if (f_path_tmp)
 	{
 		RGB = ft_split(f_path_tmp, ',');
-	}
-	if (c_path_tmp)
-	{
-		RGB = ft_split(c_path_tmp, ',');
 		free(f_path_tmp);
 		f_path_tmp = NULL;
 		if (!RGB || !RGB[0] || !RGB[1] || !RGB[2])
@@ -139,7 +135,21 @@ void	only_map(t_cub *cub)
 		b = ft_atoi(RGB[2]);
 		cub->map->f_path =  r * 10000 + g * 100 + b;
 		ft_free(RGB);
+		free(f_path_tmp);
 	}
-	printf("cub->map->f_path = %d", cub->map->f_path);
+	if (c_path_tmp)
+	{
+		RGB = ft_split(c_path_tmp, ',');
+		free(c_path_tmp);
+		c_path_tmp = NULL;
+		if (!RGB || !RGB[0] || !RGB[1] || !RGB[2])
+			return ;
+		r = ft_atoi(RGB[0]);
+		g = ft_atoi(RGB[1]);
+		b = ft_atoi(RGB[2]);
+		cub->map->c_path =  r * 10000 + g * 100 + b;
+		ft_free(RGB);
+		free(c_path_tmp);
+	}
 	ft_new_map(cub, map_tmp, count);
 }
