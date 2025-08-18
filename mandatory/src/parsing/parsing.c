@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tsug <tsug@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 10:34:08 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/14 15:45:34 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/18 02:25:57 by tsug             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,120 @@ int	verif_character_map(char **map_tmp, t_cub *cub)
 	return (0);
 }
 
+int	ft_empty_line(char *line)
+{
+    int	i;
+
+    i = 0;
+    if (!line)
+        return (1);
+    while (line[i])
+    {
+        if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+            return (0);
+        i++;
+    }
+    return (1);
+}
+
+char	*ft_path_picture(char *line)
+{
+    int		i;
+    int		start;
+    int		end;
+    char	*path;
+
+    i = 0;
+    while (line[i] == ' ' || line[i] == '\t' || line[i] == ':')
+        i++;
+    start = i;
+    while (line[i] && line[i] != '\n')
+        i++;
+    end = i;
+    while (end > start && (line[end - 1] == ' ' || line[end - 1] == '\t'))
+        end--;
+    path = ft_calloc(end - start + 1, sizeof(char));
+    if (!path)
+        return (NULL);
+    i = 0;
+    while (start < end)
+        path[i++] = line[start++];
+    return (path);
+}
+
+void	ft_new_map(t_cub *cub, char **map_tmp, int count)
+{
+	int	j;
+
+	j = 0;
+	ft_free(cub->map->map);
+	cub->map->size_ver = cub->map->size_ver - count;
+	cub->map->map = ft_calloc(cub->map->size_ver + 1, sizeof(char *));
+	if (!cub->map->map)
+	{
+		free_all(cub);
+		exit (1);
+	}
+	while (map_tmp[count])
+	{
+		cub->map->map[j] = ft_strdup(map_tmp[count]);
+		j++;
+		count++;
+	}
+}
+
+void	only_map(t_cub *cub)
+{
+    int	y;
+    int	count;
+    char	*line;
+	char	**map_tmp;
+
+    y = 0;
+    count = 0;
+	map_tmp = ft_strcopy(cub->map->map, cub);
+    while (map_tmp[y])
+    {
+        line = map_tmp[y];
+        if (ft_empty_line(line))
+        {
+            y++;
+            count++;
+            continue;
+        }
+        else if (ft_strncmp(line, "NO", 2) == 0)
+        {
+            cub->map->n_path = ft_path_picture(line + 2);
+            y++;
+            count++;
+            continue;
+        }
+        else if (ft_strncmp(line, "SO", 2) == 0)
+        {
+            cub->map->s_path = ft_path_picture(line + 2);
+            y++;
+            count++;
+            continue;
+        }
+        else if (ft_strncmp(line, "WE", 2) == 0)
+        {
+            cub->map->w_path = ft_path_picture(line + 2);
+            y++;
+            count++;
+            continue;
+        }
+        else if (ft_strncmp(line, "EA", 2) == 0)
+        {
+            cub->map->e_path = ft_path_picture(line + 2);
+            y++;
+            count++;
+            continue;
+        }
+        break;
+    }
+	ft_new_map(cub, map_tmp, count);
+}
+
 int	ft_parsing(char **map, t_cub *cub)
 {
 	char	*tab;
@@ -125,9 +239,16 @@ int	ft_parsing(char **map, t_cub *cub)
 	tab = ft_copytab(map);
 	if (ft_map_tab(cub, tab))
 		return (1);
+	only_map(cub);
 	map_tmp = ft_strcopy(cub->map->map, cub);
 	if (!map_tmp)
 		return (1);
+	int	i = 0;
+	while (map_tmp[i])
+	{
+		printf("map = %s\n", map_tmp[i]);
+		i++;
+	}
 	if (verif_character_map(map_tmp, cub) == 1)
 	{
 		ft_free(map_tmp);
