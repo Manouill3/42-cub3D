@@ -6,7 +6,7 @@
 /*   By: tsug <tsug@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 09:40:43 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/18 01:01:25 by tsug             ###   ########.fr       */
+/*   Updated: 2025/08/18 23:32:16 by tsug             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	raycast(void *param)
 
 	i = 0;
 	cub = (t_cub *)param;
-	mlx_clear_window(cub->mlx, cub->win->window, color(0x000000FF));
+	mlx_clear_window(cub->mlx, cub->win->window, color(cub->map->f_path));
 	if (cub->player->arrow_left)
 		cub->player->angle -= 2;
 	if (cub->player->arrow_right)

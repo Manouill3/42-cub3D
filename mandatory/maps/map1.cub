@@ -1,7 +1,5 @@
-NO ./maps/pictures/chat_ouest.png
-SO ./maps/pictures/chat_sud.png
-WE ./maps/pictures/chat_est.png
-EA ./maps/pictures/me.png
+F 255, 0, 0
+C 255, 0, 0
 
         1111111111111111111111111
         1000000000110000000000001

@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 12:31:44 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/14 15:26:35 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/18 15:15:02 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,32 @@ int	flood_fill(char **cub, int x, int y, int status)
 	status = flood_fill(cub, x, y + 1, status);
 	status = flood_fill(cub, x, y - 1, status);
 	return (status);
+}
+
+int	ft_transfer_map(t_cub *cub, char *tab)
+{
+	int	i;
+	int	j;
+	int	z;
+	int	line_size;
+
+	i = 0;
+	j = 0;
+	while (tab && tab[i])
+	{
+		z = 0;
+		line_size = 0;
+		while (tab[i + line_size] && tab[i + line_size] != '\n')
+			line_size++;
+		cub->map->map[j] = ft_calloc(line_size + 1, sizeof(char));
+		if (!cub->map->map[j])
+			return (1);
+		while (tab[i] && tab[i] != '\n')
+			cub->map->map[j][z++] = tab[i++];
+		if (tab[i] == '\n')
+			i++;
+		j++;
+	}
+	free(tab);
+	return (0);
 }
