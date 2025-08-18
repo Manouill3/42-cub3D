@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsug <tsug@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:33:11 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/12 14:11:43 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/18 02:41:18 by tsug             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,41 @@ void	ft_destroy(t_cub *cub)
 	mlx_destroy_context(cub->mlx);
 }
 
+void	ft_free_path(t_cub *cub)
+{
+    t_map *map = cub->map;
+    
+    if (map->n_path)
+    {
+        free(map->n_path);
+        map->n_path = NULL;
+    }
+    if (map->s_path)
+    {
+        free(map->s_path);
+        map->s_path = NULL;
+    }
+    if (map->e_path)
+    {
+        free(map->e_path);
+        map->e_path = NULL;
+    }
+    if (map->w_path)
+    {
+        free(map->w_path);
+        map->w_path = NULL;
+    }
+}
+
 void	free_all(t_cub *cub)
 {
 	if (cub->map && cub->map->map)
 		ft_free(cub->map->map);
 	if (cub->map)
+	{
+		ft_free_path(cub);
 		free(cub->map);
+	}
 	if (cub->player)
 		free(cub->player);
 	if (cub->win)
