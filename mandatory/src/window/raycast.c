@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsug <tsug@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 09:40:43 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/18 23:32:16 by tsug             ###   ########.fr       */
+/*   Updated: 2025/08/19 11:08:36 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	raycast(void *param)
 
 	i = 0;
 	cub = (t_cub *)param;
-	mlx_clear_window(cub->mlx, cub->win->window, color(cub->map->f_path));
+	mlx_clear_window(cub->mlx, cub->win->window, color(0x050505FF));
 	if (cub->player->arrow_left)
 		cub->player->angle -= 2;
 	if (cub->player->arrow_right)
@@ -101,7 +101,7 @@ void	raycast(void *param)
 	sky_ground(cub);
 	while (i < WIDTH)
 	{
-		init_ray(cub->ray);
+		// init_ray(cub->ray);
 		get_data(cub, i);
 		get_ray(cub, i);
 		i++;

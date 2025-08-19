@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 10:34:08 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/18 15:14:59 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/19 11:35:46 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	verif_character_map(char **map_tmp, t_cub *cub)
 
 	y = 0;
 	cub->map->nb_player = 0;
-	txt = "Error the characters to create the map are not compliant\n";
+	txt = "Error\nThe characters to create the map are not compliant\n";
 	while (map_tmp[y])
 	{
 		x = 0;
@@ -77,7 +77,7 @@ int	verif_character_map(char **map_tmp, t_cub *cub)
 		{
 			if (ft_charac_accetable(map_tmp[y][x], cub, x, y) == 1)
 			{
-				write (2, txt, 57);
+				write (2, txt, 58);
 				return (1);
 			}
 			x++;
@@ -102,7 +102,7 @@ void	ft_new_map(t_cub *cub, char **map_tmp, int count)
 		free_all(cub);
 		exit (1);
 	}
-	while (map_tmp[count])
+	while (map_tmp && map_tmp[count])
 	{
 		cub->map->map[j] = ft_strdup(map_tmp[count]);
 		j++;

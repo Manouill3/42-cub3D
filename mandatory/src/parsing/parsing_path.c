@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsug <tsug@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 15:13:18 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/19 00:09:37 by tsug             ###   ########.fr       */
+/*   Updated: 2025/08/19 13:43:52 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	only_map(t_cub *cub)
 {
 	int		y;
 	int		count;
+	int		count_ver;
 	char	*line;
 	char	**map_tmp;
 	char	*f_path_tmp = NULL;
@@ -64,6 +65,7 @@ void	only_map(t_cub *cub)
 
 	y = 0;
 	count = 0;
+	count_ver = 0;
 	map_tmp = ft_strcopy(cub->map->map, cub);
 	while (map_tmp[y])
 	{
@@ -79,6 +81,7 @@ void	only_map(t_cub *cub)
 			cub->map->n_path = ft_path_picture(line + 2);
 			y++;
 			count++;
+			count_ver++;
 			continue;
 		}
 		else if (ft_strncmp(line, "SO", 2) == 0)
@@ -86,6 +89,7 @@ void	only_map(t_cub *cub)
 			cub->map->s_path = ft_path_picture(line + 2);
 			y++;
 			count++;
+			count_ver++;
 			continue;
 		}
 		else if (ft_strncmp(line, "WE", 2) == 0)
@@ -93,6 +97,7 @@ void	only_map(t_cub *cub)
 			cub->map->w_path = ft_path_picture(line + 2);
 			y++;
 			count++;
+			count_ver++;
 			continue;
 		}
 		else if (ft_strncmp(line, "EA", 2) == 0)
@@ -100,6 +105,7 @@ void	only_map(t_cub *cub)
 			cub->map->e_path = ft_path_picture(line + 2);
 			y++;
 			count++;
+			count_ver++;
 			continue;
 		}
 		else if (ft_strncmp(line, "F ", 2) == 0)
@@ -107,6 +113,7 @@ void	only_map(t_cub *cub)
 			f_path_tmp = ft_path_picture(line + 2);
 			y++;
 			count++;
+			count_ver++;
 			continue;
 		}
 		else if (ft_strncmp(line, "C ", 2) == 0)
@@ -114,14 +121,12 @@ void	only_map(t_cub *cub)
 			c_path_tmp = ft_path_picture(line + 2);
 			y++;
 			count++;
+			count_ver++;
 			continue;
 		}
 		break;
 	}
 	char	**RGB = NULL;
-	int		r;
-	int		g;
-	int		b;
 
 	if (f_path_tmp)
 	{
@@ -130,10 +135,9 @@ void	only_map(t_cub *cub)
 		f_path_tmp = NULL;
 		if (!RGB || !RGB[0] || !RGB[1] || !RGB[2])
 			return ;
-		r = ft_atoi(RGB[0]);
-		g = ft_atoi(RGB[1]);
-		b = ft_atoi(RGB[2]);
-		cub->map->f_path =  r * 10000 + g * 100 + b;
+		cub->ground.r = ft_atoi(RGB[0]);
+		cub->ground.g = ft_atoi(RGB[1]);
+		cub->ground.b = ft_atoi(RGB[2]);
 		ft_free(RGB);
 		free(f_path_tmp);
 	}
@@ -144,12 +148,18 @@ void	only_map(t_cub *cub)
 		c_path_tmp = NULL;
 		if (!RGB || !RGB[0] || !RGB[1] || !RGB[2])
 			return ;
-		r = ft_atoi(RGB[0]);
-		g = ft_atoi(RGB[1]);
-		b = ft_atoi(RGB[2]);
-		cub->map->c_path =  r * 10000 + g * 100 + b;
+		cub->sky.r = ft_atoi(RGB[0]);
+		cub->sky.g = ft_atoi(RGB[1]);
+		cub->sky.b = ft_atoi(RGB[2]);
 		ft_free(RGB);
 		free(c_path_tmp);
+	}
+	free(map_tmp);
+	if (count_ver != 6)
+	{
+		write(2, "Error\nMissing element or too many elements\n", 43);
+		free_all(cub);
+		exit (1);
 	}
 	ft_new_map(cub, map_tmp, count);
 }
