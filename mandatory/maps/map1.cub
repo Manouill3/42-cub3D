@@ -3,8 +3,9 @@ NO ./includes/pictures/chat_est.png
 SO ./includes/pictures/me.png
 WE ./includes/pictures/chat_est.png
 EA ./includes/pictures/chat_est.png
+
 F 220,100,0
-C 225,
+C 225,100,0
 
 
         1111111111111111111111111

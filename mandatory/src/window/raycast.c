@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 09:40:43 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/19 11:08:36 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/20 00:09:14 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ void	raycast(void *param)
 	sky_ground(cub);
 	while (i < WIDTH)
 	{
-		// init_ray(cub->ray);
 		get_data(cub, i);
 		get_ray(cub, i);
 		i++;

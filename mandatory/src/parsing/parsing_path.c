@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 15:13:18 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/19 23:29:38 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/19 23:57:16 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	only_map(t_cub *cub)
 		}
 		else if (ft_strncmp(line, "NO", 2) == 0)
 		{
-			// printf("HERE600\n");
 			cub->map->n_path = ft_path_picture(line + 2);
 			y++;
 			count++;
@@ -87,7 +86,6 @@ void	only_map(t_cub *cub)
 		}
 		else if (ft_strncmp(line, "SO", 2) == 0)
 		{
-			// printf("HERE500\n");
 			cub->map->s_path = ft_path_picture(line + 2);
 			y++;
 			count++;
@@ -96,7 +94,6 @@ void	only_map(t_cub *cub)
 		}
 		else if (ft_strncmp(line, "WE", 2) == 0)
 		{
-			// printf("HERE400\n");
 			cub->map->w_path = ft_path_picture(line + 2);
 			y++;
 			count++;
@@ -105,7 +102,6 @@ void	only_map(t_cub *cub)
 		}
 		else if (ft_strncmp(line, "EA", 2) == 0)
 		{
-			// printf("HERE300\n");
 			cub->map->e_path = ft_path_picture(line + 2);
 			y++;
 			count++;
@@ -114,7 +110,6 @@ void	only_map(t_cub *cub)
 		}
 		else if (ft_strncmp(line, "F ", 2) == 0)
 		{
-			// printf("HERE200\n");
 			f_path_tmp = ft_path_picture(line + 2);
 			y++;
 			count++;
@@ -123,7 +118,6 @@ void	only_map(t_cub *cub)
 		}
 		else if (ft_strncmp(line, "C ", 2) == 0)
 		{
-			// printf("HERE100\n");
 			c_path_tmp = ft_path_picture(line + 2);
 			y++;
 			count++;
@@ -133,17 +127,13 @@ void	only_map(t_cub *cub)
 		break;
 	}
 	char	**RGB = NULL;
-	
 	if (f_path_tmp)
 	{
 		RGB = ft_split(f_path_tmp, ',');
 		free(f_path_tmp);
 		f_path_tmp = NULL;
 		if (!RGB || !RGB[0] || !RGB[1] || !RGB[2])
-		{
-			// printf("HERE1\n");
 			ft_error_path(map_tmp, cub, "Error\nMissing element or too many elements\n");
-		}
 		cub->ground.r = ft_atoi(RGB[0]);
 		cub->ground.g = ft_atoi(RGB[1]);
 		cub->ground.b = ft_atoi(RGB[2]);
@@ -168,9 +158,6 @@ void	only_map(t_cub *cub)
 		free(c_path_tmp);
 	}
 	if (count_ver != 6)
-	{
-		// printf("HERE4\n");
 		ft_error_path(map_tmp, cub, "Error\nMissing element or too many elements\n");
-	}
 	ft_new_map(cub, map_tmp, count);
 }

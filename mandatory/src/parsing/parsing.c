@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 10:34:08 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/19 19:10:17 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/19 23:59:40 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,12 +123,6 @@ int	ft_parsing(char **map, t_cub *cub)
 	map_tmp = ft_strcopy(cub->map->map, cub);
 	if (!map_tmp)
 		return (1);
-	int	i = 0;
-	while (map_tmp[i])
-	{
-		// printf("map = %s\n", map_tmp[i]);
-		i++;
-	}
 	if (verif_character_map(map_tmp, cub) == 1)
 	{
 		ft_free(map_tmp);
