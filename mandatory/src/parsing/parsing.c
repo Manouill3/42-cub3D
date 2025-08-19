@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 10:34:08 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/19 11:35:46 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/19 14:07:32 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ void	ft_new_map(t_cub *cub, char **map_tmp, int count)
 		j++;
 		count++;
 	}
+	ft_free(map_tmp);
 }
 
 int	ft_parsing(char **map, t_cub *cub)

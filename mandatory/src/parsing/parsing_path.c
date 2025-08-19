@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 15:13:18 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/19 13:43:52 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/19 14:07:17 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,10 +154,10 @@ void	only_map(t_cub *cub)
 		ft_free(RGB);
 		free(c_path_tmp);
 	}
-	free(map_tmp);
 	if (count_ver != 6)
 	{
 		write(2, "Error\nMissing element or too many elements\n", 43);
+		ft_free(map_tmp);
 		free_all(cub);
 		exit (1);
 	}
