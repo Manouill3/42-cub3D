@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsug <tsug@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:10:33 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/18 23:00:48 by tsug             ###   ########.fr       */
+/*   Updated: 2025/08/19 18:54:26 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int         ft_strlen_map(char *str);
 int         ft_charac_accetable(char str, t_cub *cub, int x, int y);
 int         ft_error_charac(t_cub *cub);
 char        **ft_strcopy(char **str, t_cub *cub);
+void	    ft_error_path(char **map_tmp, t_cub *cub, char *error);
 
 //// free ////
 

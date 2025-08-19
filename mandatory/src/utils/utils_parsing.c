@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:26:46 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/14 13:34:41 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/19 18:56:59 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,12 @@ char	**ft_strcopy(char **str, t_cub *cub)
 		i++;
 	}
 	return (new_str);
+}
+
+void	ft_error_path(char **map_tmp, t_cub *cub, char *error)
+{
+	write(2, error, ft_strlen(error));
+	ft_free(map_tmp);
+	free_all(cub);
+	exit (1);
 }
