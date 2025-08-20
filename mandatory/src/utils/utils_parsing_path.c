@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 14:01:47 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/20 23:06:28 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/20 23:26:24 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_verif_rgb(char **rgb, char **map_tmp, t_cub *cub)
 	i = 0;
 	while (rgb[i])
 	{
-		printf("rgb[i] %s\n", rgb[i]);
+		// printf("rgb[i] %s\n", rgb[i]);
 		if (i > 2)
 			ft_error_path(map_tmp, cub,
 				"Error\nMissing element or too many elements\n", rgb);
