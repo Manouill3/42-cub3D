@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 15:13:18 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/20 14:10:06 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/20 15:56:51 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ char	*ft_path_picture(char *line)
 	char	*path;
 
 	i = 0;
-	while (line[i] == ' ' || line[i] == '\t' || line[i] == ':')
+	while (line[i] == ' ' || line[i] == '\t')
 		i++;
+	if (i == 0)
+		return (NULL);
 	start = i;
 	while (line[i] && line[i] != '\n')
 		i++;
@@ -55,8 +57,10 @@ char	*ft_path_picture(char *line)
 
 void	ft_path_color_ground(t_cub *cub, char **map_tmp)
 {
+	int		i;
 	char	**rgb;
 
+	i = 0;
 	rgb = NULL;
 	if (cub->pars->f_path_tmp)
 	{
@@ -69,6 +73,7 @@ void	ft_path_color_ground(t_cub *cub, char **map_tmp)
 		cub->ground.r = ft_atoi(rgb[0]);
 		cub->ground.g = ft_atoi(rgb[1]);
 		cub->ground.b = ft_atoi(rgb[2]);
+		ft_verif_rgb(rgb, map_tmp, cub);
 		if ((ft_atoi(rgb[0]) > 255 || ft_atoi(rgb[0]) < 0)
 			|| (ft_atoi(rgb[1]) > 255 || ft_atoi(rgb[1]) < 0)
 			|| (ft_atoi(rgb[2]) > 255 || ft_atoi(rgb[2]) < 0))
@@ -80,8 +85,10 @@ void	ft_path_color_ground(t_cub *cub, char **map_tmp)
 
 void	ft_path_color_sky(t_cub *cub, char **map_tmp)
 {
+	int		i;
 	char	**rgb;
 
+	i = 0;
 	rgb = NULL;
 	if (cub->pars->c_path_tmp)
 	{
@@ -94,6 +101,7 @@ void	ft_path_color_sky(t_cub *cub, char **map_tmp)
 		cub->sky.r = ft_atoi(rgb[0]);
 		cub->sky.g = ft_atoi(rgb[1]);
 		cub->sky.b = ft_atoi(rgb[2]);
+		ft_verif_rgb(rgb, map_tmp, cub);
 		if ((ft_atoi(rgb[0]) > 255 || ft_atoi(rgb[0]) < 0)
 			|| (ft_atoi(rgb[1]) > 255 || ft_atoi(rgb[1]) < 0)
 			|| (ft_atoi(rgb[2]) > 255 || ft_atoi(rgb[2]) < 0))
@@ -112,6 +120,10 @@ void	only_map(t_cub *cub)
 	cub->pars->y = 0;
 	cub->pars->count = 0;
 	cub->pars->count_ver = 0;
+	cub->map->e_path = NULL;
+	cub->map->n_path = NULL;
+	cub->map->s_path = NULL;
+	cub->map->w_path = NULL;
 	map_tmp = ft_strcopy(cub->map->map, cub);
 	while (map_tmp[cub->pars->y])
 	{

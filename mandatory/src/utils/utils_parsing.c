@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:26:46 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/20 14:08:53 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/20 14:39:07 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,10 @@ void	ft_error_path(char **map_tmp, t_cub *cub, char *error, char **rgb)
 {
 	if (rgb)
 		ft_free(rgb);
+	if (cub->pars->c_path_tmp)
+		free(cub->pars->c_path_tmp);
+	if (cub->pars->f_path_tmp)
+		free(cub->pars->f_path_tmp);
 	write(2, error, ft_strlen(error));
 	ft_free(map_tmp);
 	free_all(cub);

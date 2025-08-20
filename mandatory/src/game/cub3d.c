@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 07:15:27 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/20 00:08:43 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/20 15:22:01 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	init_text(t_cub *cub)
 	if (!cub->img[WEST] || !cub->img[EAST]
 		|| !cub->img[NORTH] || !cub->img[SOUTH])
 	{
-		ft_destroy(cub);
+		free_all(cub);
 		exit(1);
 	}
 }

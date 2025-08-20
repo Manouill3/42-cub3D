@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:10:33 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/20 14:09:28 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/20 15:57:05 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,10 @@ void	    ft_error_path(char **map_tmp, t_cub *cub, char *error, char **rgb);
 
 // utils_parsing_path.c //
 
+void	    ft_verif_rgb(char **rgb, char **map_tmp, t_cub *cub);
 void        ft_give_path(t_cub *cub, char **map_tmp);
 int         parse_line(t_cub *cub, char **map_tmp);
+int         char_in_color(char *s);
 
 //// free ////
 

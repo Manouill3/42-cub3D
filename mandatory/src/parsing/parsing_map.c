@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 12:31:44 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/19 23:59:25 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/20 15:43:58 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	flood_fill(char **cub, int x, int y, int status)
 	if (status == 1)
 		return (1);
 	if (x < 0 || y < 0 || (int)strlen_line(cub) <= y
-		|| (int)ft_strlen(cub[y]) <= x)
+		|| (int)ft_strlen(cub[y]) <= x || cub[y][x] == ' ')
 		return (1);
 	if (cub[y][x] != '0' && cub[y][x] != 'N' && cub[y][x] != 'S' &&
 		cub[y][x] != 'E' && cub[y][x] != 'W')
