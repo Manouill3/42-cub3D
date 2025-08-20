@@ -6,7 +6,7 @@
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 13:20:05 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/14 13:39:52 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/20 11:19:12 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ int	check_x(float y, float x, char c, t_map *map)
 
 void	apply_position(t_player *player, t_map *map, float x, float y)
 {
-	if (check_y(y, x, '1', map))
+	if (check_y(y, x, '1', map) && check_x(y, x, '1', map))
+	{
 		player->pos_y = y;
-	if (check_x(y, x, '1', map))
 		player->pos_x = x;
+	}
 }
