@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:10:05 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/19 11:28:00 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/20 13:43:50 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_map
 	char		*s_path;
 	char		*e_path;
 	char		*w_path;
+
 	int			w_n;
 	int			h_n;
 	int			w_s;
@@ -81,6 +82,16 @@ typedef struct s_map
 	int			size_ver;
 	int			nb_player;
 }   t_map;
+
+typedef	struct s_parsing
+{
+	char		*f_path_tmp;
+	char		*c_path_tmp;
+	int			count_ver;
+	int			y;
+	int			count;
+}	t_parsing;
+
 
 typedef enum s_image
 {
@@ -95,6 +106,7 @@ typedef struct s_cub
 {
 	mlx_image	img[SIZE];
 	int			key[250];
+	t_parsing	*pars;
 	t_map       *map;
 	t_player    *player;
 	t_win		*win;

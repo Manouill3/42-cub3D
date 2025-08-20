@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tsug <tsug@student.42.fr>                  +#+  +:+       +#+         #
+#    By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 06:04:01 by mdegache          #+#    #+#              #
-#    Updated: 2025/08/18 21:36:49 by tsug             ###   ########.fr        #
+#    Updated: 2025/08/20 14:05:54 by tcybak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRC = 	src/main.c\
 		src/window/move.c\
 		src/utils/get_next_line.c\
 		src/utils/utils_parsing.c\
+		src/utils/utils_parsing_path.c\
 		src/utils/color.c\
 		src/free/ft_free.c
 

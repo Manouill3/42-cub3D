@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:26:46 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/20 00:09:00 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/20 14:08:53 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,10 @@ char	**ft_strcopy(char **str, t_cub *cub)
 	return (new_str);
 }
 
-void	ft_error_path(char **map_tmp, t_cub *cub, char *error)
+void	ft_error_path(char **map_tmp, t_cub *cub, char *error, char **rgb)
 {
+	if (rgb)
+		ft_free(rgb);
 	write(2, error, ft_strlen(error));
 	ft_free(map_tmp);
 	free_all(cub);

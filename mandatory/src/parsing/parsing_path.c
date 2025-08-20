@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 15:13:18 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/19 23:57:16 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/20 14:10:06 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,111 +53,75 @@ char	*ft_path_picture(char *line)
 	return (path);
 }
 
+void	ft_path_color_ground(t_cub *cub, char **map_tmp)
+{
+	char	**rgb;
+
+	rgb = NULL;
+	if (cub->pars->f_path_tmp)
+	{
+		rgb = ft_split(cub->pars->f_path_tmp, ',');
+		free(cub->pars->f_path_tmp);
+		cub->pars->f_path_tmp = NULL;
+		if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
+			ft_error_path(map_tmp, cub,
+				"Error\nMissing element or too many elements\n", rgb);
+		cub->ground.r = ft_atoi(rgb[0]);
+		cub->ground.g = ft_atoi(rgb[1]);
+		cub->ground.b = ft_atoi(rgb[2]);
+		if ((ft_atoi(rgb[0]) > 255 || ft_atoi(rgb[0]) < 0)
+			|| (ft_atoi(rgb[1]) > 255 || ft_atoi(rgb[1]) < 0)
+			|| (ft_atoi(rgb[2]) > 255 || ft_atoi(rgb[2]) < 0))
+			ft_error_path(map_tmp, cub, "Error\nColor rgb too high\n", rgb);
+		ft_free(rgb);
+		free(cub->pars->f_path_tmp);
+	}
+}
+
+void	ft_path_color_sky(t_cub *cub, char **map_tmp)
+{
+	char	**rgb;
+
+	rgb = NULL;
+	if (cub->pars->c_path_tmp)
+	{
+		rgb = ft_split(cub->pars->c_path_tmp, ',');
+		free(cub->pars->c_path_tmp);
+		cub->pars->c_path_tmp = NULL;
+		if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
+			ft_error_path(map_tmp, cub,
+				"Error\nMissing element or too many elements\n", rgb);
+		cub->sky.r = ft_atoi(rgb[0]);
+		cub->sky.g = ft_atoi(rgb[1]);
+		cub->sky.b = ft_atoi(rgb[2]);
+		if ((ft_atoi(rgb[0]) > 255 || ft_atoi(rgb[0]) < 0)
+			|| (ft_atoi(rgb[1]) > 255 || ft_atoi(rgb[1]) < 0)
+			|| (ft_atoi(rgb[2]) > 255 || ft_atoi(rgb[2]) < 0))
+			ft_error_path(map_tmp, cub, "Error\nColor rgb too high\n", rgb);
+		ft_free(rgb);
+		free(cub->pars->c_path_tmp);
+	}
+}
+
 void	only_map(t_cub *cub)
 {
-	int		y;
-	int		count;
-	int		count_ver;
-	char	*line;
 	char	**map_tmp;
-	char	*f_path_tmp = NULL;
-	char	*c_path_tmp = NULL;
 
-	y = 0;
-	count = 0;
-	count_ver = 0;
+	cub->pars->f_path_tmp = NULL;
+	cub->pars->c_path_tmp = NULL;
+	cub->pars->y = 0;
+	cub->pars->count = 0;
+	cub->pars->count_ver = 0;
 	map_tmp = ft_strcopy(cub->map->map, cub);
-	while (map_tmp[y])
+	while (map_tmp[cub->pars->y])
 	{
-		line = map_tmp[y];
-		if (ft_empty_line(line))
-		{
-			y++;
-			count++;
-			continue;
-		}
-		else if (ft_strncmp(line, "NO", 2) == 0)
-		{
-			cub->map->n_path = ft_path_picture(line + 2);
-			y++;
-			count++;
-			count_ver++;
-			continue;
-		}
-		else if (ft_strncmp(line, "SO", 2) == 0)
-		{
-			cub->map->s_path = ft_path_picture(line + 2);
-			y++;
-			count++;
-			count_ver++;
-			continue;
-		}
-		else if (ft_strncmp(line, "WE", 2) == 0)
-		{
-			cub->map->w_path = ft_path_picture(line + 2);
-			y++;
-			count++;
-			count_ver++;
-			continue;
-		}
-		else if (ft_strncmp(line, "EA", 2) == 0)
-		{
-			cub->map->e_path = ft_path_picture(line + 2);
-			y++;
-			count++;
-			count_ver++;
-			continue;
-		}
-		else if (ft_strncmp(line, "F ", 2) == 0)
-		{
-			f_path_tmp = ft_path_picture(line + 2);
-			y++;
-			count++;
-			count_ver++;
-			continue;
-		}
-		else if (ft_strncmp(line, "C ", 2) == 0)
-		{
-			c_path_tmp = ft_path_picture(line + 2);
-			y++;
-			count++;
-			count_ver++;
-			continue;
-		}
-		break;
+		if (!parse_line(cub, map_tmp))
+			break ;
 	}
-	char	**RGB = NULL;
-	if (f_path_tmp)
-	{
-		RGB = ft_split(f_path_tmp, ',');
-		free(f_path_tmp);
-		f_path_tmp = NULL;
-		if (!RGB || !RGB[0] || !RGB[1] || !RGB[2])
-			ft_error_path(map_tmp, cub, "Error\nMissing element or too many elements\n");
-		cub->ground.r = ft_atoi(RGB[0]);
-		cub->ground.g = ft_atoi(RGB[1]);
-		cub->ground.b = ft_atoi(RGB[2]);
-		if ((ft_atoi(RGB[0]) > 255 || ft_atoi(RGB[0]) < 0 )|| (ft_atoi(RGB[1]) > 255 || ft_atoi(RGB[1]) < 0) || (ft_atoi(RGB[2]) > 255 || ft_atoi(RGB[2]) < 0))
-			ft_error_path(map_tmp, cub, "Error\nColor RGB too high\n");
-		ft_free(RGB);
-		free(f_path_tmp);
-	}
-	if (c_path_tmp)
-	{
-		RGB = ft_split(c_path_tmp, ',');
-		free(c_path_tmp);
-		c_path_tmp = NULL;
-		if (!RGB || !RGB[0] || !RGB[1] || !RGB[2])
-			ft_error_path(map_tmp, cub, "Error\nMissing element or too many elements\n");
-		cub->sky.r = ft_atoi(RGB[0]);
-		cub->sky.g = ft_atoi(RGB[1]);
-		cub->sky.b = ft_atoi(RGB[2]);
-	if ((ft_atoi(RGB[0]) > 255 || ft_atoi(RGB[0]) < 0 )|| (ft_atoi(RGB[1]) > 255 || ft_atoi(RGB[1]) < 0) || (ft_atoi(RGB[2]) > 255 || ft_atoi(RGB[2]) < 0))
-			ft_error_path(map_tmp, cub, "Error\nColor RGB too high\n");
-		ft_free(RGB);
-		free(c_path_tmp);
-	}
-	if (count_ver != 6)
-		ft_error_path(map_tmp, cub, "Error\nMissing element or too many elements\n");
-	ft_new_map(cub, map_tmp, count);
+	ft_path_color_ground(cub, map_tmp);
+	ft_path_color_sky(cub, map_tmp);
+	if (cub->pars->count_ver != 6)
+		ft_error_path(map_tmp, cub,
+			"Error\nMissing element or too many elements\n", NULL);
+	ft_new_map(cub, map_tmp, cub->pars->count);
 }

@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:10:33 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/19 18:54:26 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/20 14:09:28 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	    sky_ground(t_cub *cub);
 
 int         ft_empty_line(char *line);
 char        *ft_path_picture(char *line);
+void        ft_path_color_ground(t_cub *cub, char **map_tmp);
+void        ft_path_color_sky(t_cub *cub, char **map_tmp);
 void	    only_map(t_cub *cub);
 
 // parsing.c //
@@ -97,7 +99,12 @@ int         ft_strlen_map(char *str);
 int         ft_charac_accetable(char str, t_cub *cub, int x, int y);
 int         ft_error_charac(t_cub *cub);
 char        **ft_strcopy(char **str, t_cub *cub);
-void	    ft_error_path(char **map_tmp, t_cub *cub, char *error);
+void	    ft_error_path(char **map_tmp, t_cub *cub, char *error, char **rgb);
+
+// utils_parsing_path.c //
+
+void        ft_give_path(t_cub *cub, char **map_tmp);
+int         parse_line(t_cub *cub, char **map_tmp);
 
 //// free ////
 

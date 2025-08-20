@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 17:33:11 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/20 00:01:12 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/20 13:52:30 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	free_all(t_cub *cub)
 		ft_free_path(cub);
 		free(cub->map);
 	}
+	if (cub->pars)
+		free(cub->pars);
 	if (cub->player)
 		free(cub->player);
 	if (cub->win)
