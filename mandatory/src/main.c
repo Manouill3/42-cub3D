@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:30:22 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/20 14:06:10 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/20 23:21:23 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int	check_ext(char *file, char *ext)
 
 int	init_more_last(t_cub *cub)
 {
+	cub->img[NORTH] = NULL;
+	cub->img[SOUTH] = NULL;
+	cub->img[WEST] = NULL;
+	cub->img[EAST] = NULL;
 	cub->pars = malloc(sizeof(t_parsing));
 	if (!cub->pars)
 	{
@@ -43,6 +47,10 @@ int	init_more_last(t_cub *cub)
 		free(cub);
 		return (1);
 	}
+	cub->map->e_path = NULL;
+	cub->map->n_path = NULL;
+	cub->map->w_path = NULL;
+	cub->map->s_path = NULL;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 12:36:25 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/19 11:07:10 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/20 23:15:47 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,23 @@ int	ft_number_separator(char *str, char s)
 		i++;
 	}
 	return (count);
+}
+
+int	ft_count_separator(char *path)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while(path && path[i])
+	{
+		if (path[i] == ',')
+			count++;
+		i++;
+	}
+	if (count > 2)
+		return (-1);
+	else
+		return (0);
 }

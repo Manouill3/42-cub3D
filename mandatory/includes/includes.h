@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:10:33 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/20 15:57:05 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/20 23:11:14 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	        ft_transfer_map(t_cub *cub, char *tab);
 
 // color.c //
 
+int	        ft_count_separator(char *path);
 mlx_color   color(uint32_t color);
 void        init_ray(t_ray *ray);
 void	    get_ray_side(t_cub *cub);
