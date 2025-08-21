@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:10:33 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/21 10:40:20 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/21 11:06:10 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void		raycast(void *param);
 
 // texture.c //
 
-void		get_texture_east(t_cub *cub, int i);
+void		get_texture_west(t_cub *cub, int i);
 void		get_texture2(t_cub *cub, int i);
 void		get_texture_north(t_cub *cub, int i);
 void		get_texture1(t_cub *cub, int i);

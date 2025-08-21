@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 07:15:27 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/20 22:54:39 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/21 11:07:46 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	init_text(t_cub *cub)
 	cub->img[EAST] = mlx_new_image_from_file(cub->mlx,
 			cub->map->e_path, &cub->map->w_e, &cub->map->h_e);
 	cub->img[WEST] = mlx_new_image_from_file(cub->mlx,
-			cub->map->w_path, &cub->map->w_o, &cub->map->h_o);
+			cub->map->w_path, &cub->map->w_w, &cub->map->h_w);
 	if (!cub->img[WEST] || !cub->img[EAST]
 		|| !cub->img[NORTH] || !cub->img[SOUTH])
 	{

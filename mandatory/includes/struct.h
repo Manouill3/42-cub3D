@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:10:05 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/21 10:43:03 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/21 11:04:41 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,14 @@ typedef struct s_map
 	char		*s_path;
 	char		*e_path;
 	char		*w_path;
-
 	int			w_n;
 	int			h_n;
 	int			w_s;
 	int			h_s;
 	int			w_e;
 	int			h_e;
-	int			w_o;
-	int			h_o;
+	int			w_w;
+	int			h_w;
 	int			size_ver;
 	int			nb_player;
 }	t_map;
