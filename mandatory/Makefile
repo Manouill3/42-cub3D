@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+         #
+#    By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 06:04:01 by mdegache          #+#    #+#              #
-#    Updated: 2025/08/21 10:33:15 by tcybak           ###   ########.fr        #
+#    Updated: 2025/08/21 10:55:34 by mdegache         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,8 @@ $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+bonus: $(NAME)
+
 clean:
 	@rm -rf $(OBJ_DIR)
 	@$(MAKE) -s -C $(LIB) clean
@@ -83,4 +85,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY : all clean fclean re NAME MLX LIBFT OBJ_DIR
+.PHONY : all clean fclean re NAME MLX LIBFT OBJ_DIR bonus
