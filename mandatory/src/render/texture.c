@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:25:29 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/21 10:03:27 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/21 10:27:31 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	get_texture_east(t_cub *cub, int i)
 		cub->ray->text_pos = cub->ray->text_start + (cub->ray->start_y
 				- cub->ray->save_start_y) * cub->ray->text_step;
 		cub->ray->tex_y = (int)(cub->ray->text_pos * cub->map->h_e);
-		cub->ray->pixel_color = mlx_get_image_pixel(cub->mlx, cub->img[EAST],
+		cub->ray->pixel_color = mlx_get_image_pixel(cub->mlx, cub->img[WEST],
 				cub->ray->tex_x, cub->ray->tex_y);
 		mlx_pixel_put(cub->mlx, cub->win->window, i,
 			cub->ray->start_y, cub->ray->pixel_color);
@@ -47,7 +47,7 @@ void	get_texture2(t_cub *cub, int i)
 					- cub->ray->save_start_y) * cub->ray->text_step;
 			cub->ray->tex_y = (int)(cub->ray->text_pos * cub->map->h_o);
 			cub->ray->pixel_color = mlx_get_image_pixel(cub->mlx,
-					cub->img[WEST], cub->ray->tex_x, cub->ray->tex_y);
+					cub->img[EAST], cub->ray->tex_x, cub->ray->tex_y);
 			mlx_pixel_put(cub->mlx, cub->win->window, i,
 				cub->ray->start_y, cub->ray->pixel_color);
 			cub->ray->start_y++;

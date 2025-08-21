@@ -65,3 +65,11 @@ C 225,100,0
 111
 1N1
 111
+
+
+timothy doit changer :
+-norm
+-limite size map
+-inverse texture
+-reorganiser les fichiers parce que timothy doit aller se faire foutre, son gros cul la de manuarii (il est enormmmmeeee)
+ 
