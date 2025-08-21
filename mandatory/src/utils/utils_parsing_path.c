@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 14:01:47 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/20 23:26:24 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/21 10:29:16 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_verif_rgb(char **rgb, char **map_tmp, t_cub *cub)
 	i = 0;
 	while (rgb[i])
 	{
-		// printf("rgb[i] %s\n", rgb[i]);
 		if (i > 2)
 			ft_error_path(map_tmp, cub,
 				"Error\nMissing element or too many elements\n", rgb);
@@ -44,13 +43,10 @@ void	ft_give_path_row(t_cub *cub, char **map_tmp)
 	}
 	else if (ft_strncmp(map_tmp[y], "F ", 1) == 0)
 	{
-		// printf("HERE\n");
-		// printf("path = %s\n, map_tmp[y] %s\n", cub->pars->f_path_tmp, map_tmp[y]);
 		if (cub->pars->f_path_tmp != NULL)
 			ft_error_path(map_tmp, cub,
 				"Error\nSame Element\n", NULL);
 		cub->pars->f_path_tmp = ft_path_picture(map_tmp[y] + 2);
-		// printf("path = %s\n, map_tmp[y] %s\n", cub->pars->f_path_tmp, map_tmp[y]);
 	}
 	else if (ft_strncmp(map_tmp[y], "C ", 1) == 0)
 	{

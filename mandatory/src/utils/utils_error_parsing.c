@@ -1,48 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   separator.c                                        :+:      :+:    :+:   */
+/*   utils_error_parsing.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/21 09:38:56 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/21 10:38:28 by tcybak           ###   ########.fr       */
+/*   Created: 2025/08/21 10:29:43 by tcybak            #+#    #+#             */
+/*   Updated: 2025/08/21 10:38:55 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/includes.h"
 
-int	ft_number_separator(char *str, char s)
+int	error_parsing(int x, int y, char **map_tmp, t_cub *cub)
 {
-	int	i;
-	int	count;
+	char	*txt;
+	char	*txt2;
 
-	i = 0;
-	count = 0;
-	while (str[i])
+	txt = "Error\nThe characters to create the map are not compliant\n";
+	txt2 = "Error\nMap too big\n";
+	if (x > 150 || y > 150)
 	{
-		if (str[i] == s)
-			count++;
-		i++;
+		write (2, txt2, 17);
+		return (1);
 	}
-	return (count);
-}
-
-int	ft_count_separator(char *path)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (path && path[i])
+	if (ft_charac_accetable(map_tmp[y][x], cub, x, y) == 1)
 	{
-		if (path[i] == ',')
-			count++;
-		i++;
+		write (2, txt, 58);
+		return (1);
 	}
-	if (count > 2)
-		return (-1);
-	else
-		return (0);
+	return (0);
 }

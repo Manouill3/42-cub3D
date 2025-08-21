@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 15:13:18 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/20 23:34:37 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/21 10:37:53 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	ft_path_color_ground(t_cub *cub, char **map_tmp)
 		cub->ground.r = ft_atoi(rgb[0]);
 		cub->ground.g = ft_atoi(rgb[1]);
 		cub->ground.b = ft_atoi(rgb[2]);
-		// printf("RGB 0 = %s\n RGB 1 = %s\n RGB 2 = %s\n", rgb[0], rgb[1], rgb[2]);
 		ft_verif_rgb(rgb, map_tmp, cub);
 		if ((ft_atoi(rgb[0]) > 255 || ft_atoi(rgb[0]) < 0)
 			|| (ft_atoi(rgb[1]) > 255 || ft_atoi(rgb[1]) < 0)
@@ -103,7 +102,6 @@ void	ft_path_color_sky(t_cub *cub, char **map_tmp)
 		cub->sky.g = ft_atoi(rgb[1]);
 		cub->sky.b = ft_atoi(rgb[2]);
 		ft_verif_rgb(rgb, map_tmp, cub);
-		// printf("RGB 0 = %s\n RGB 1 = %s\n RGB 2 = %s\n", rgb[0], rgb[1], rgb[2]);
 		if ((ft_atoi(rgb[0]) > 255 || ft_atoi(rgb[0]) < 0)
 			|| (ft_atoi(rgb[1]) > 255 || ft_atoi(rgb[1]) < 0)
 			|| (ft_atoi(rgb[2]) > 255 || ft_atoi(rgb[2]) < 0))

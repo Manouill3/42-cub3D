@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:10:33 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/21 10:10:51 by mdegache         ###   ########.fr       */
+/*   Updated: 2025/08/21 10:40:20 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,99 +32,99 @@
 
 // main.c //
 
-int		    check_ext(char *file, char *ext);
-int         init_more_last(t_cub *cub);
-int         init_more(t_cub  *cub);
-int		    ft_init(t_cub **cub);
+int			check_ext(char *file, char *ext);
+int			init_more_last(t_cub *cub);
+int			init_more(t_cub *cub);
+int			ft_init(t_cub **cub);
 
 //// free ////
 
 // ft_free.c //
 
-void	    ft_free(char **str);
-void	    ft_destroy(t_cub *cub);
-void	    ft_free_path(t_cub *cub);
-void	    free_all(t_cub *cub);
+void		ft_free(char **str);
+void		ft_destroy(t_cub *cub);
+void		ft_free_path(t_cub *cub);
+void		free_all(t_cub *cub);
 
 //// game ////
 
 // collision.c //
 
-int	        check_y(float y, float x, char c, t_map *map);
-int	        check_x(float y, float x, char c, t_map *map);
-void	    apply_position(t_player *player, t_map *map, float x, float y);
+int			check_y(float y, float x, char c, t_map *map);
+int			check_x(float y, float x, char c, t_map *map);
+void		apply_position(t_player *player, t_map *map, float x, float y);
 
 // events.c //
 
-void	    events(t_cub *cub);
-void	    event_window(int event, void *param);
-void	    handle_key(int keycode, void *param);
-void	    handle_key_up(int keycode, void *param);
+void		events(t_cub *cub);
+void		event_window(int event, void *param);
+void		handle_key(int keycode, void *param);
+void		handle_key_up(int keycode, void *param);
 
 // move.c //
 
-void	    move_right(t_cub *cub);
-void	    move_left(t_cub *cub);
-void	    move_backward(t_cub *cub);
-void	    move_forward(t_cub *cub);
-void	    move(t_cub *cub);
+void		move_right(t_cub *cub);
+void		move_left(t_cub *cub);
+void		move_backward(t_cub *cub);
+void		move_forward(t_cub *cub);
+void		move(t_cub *cub);
 
 //// parsing ////
 
 // parsing_map.c //
 
-int	        strlen_line(char **map);
-int	        flood_fill(char **cub, int x, int y, int status);
-int	        ft_transfer_map(t_cub *cub, char *tab);
+int			strlen_line(char **map);
+int			flood_fill(char **cub, int x, int y, int status);
+int			ft_transfer_map(t_cub *cub, char *tab);
 
 // parsing_path.c //
 
-int	        ft_empty_line(char *line);
-char	    *ft_path_picture(char *line);
-void	    ft_path_color_ground(t_cub *cub, char **map_tmp);
-void	    ft_path_color_sky(t_cub *cub, char **map_tmp);
-void	    only_map(t_cub *cub);
+int			ft_empty_line(char *line);
+char		*ft_path_picture(char *line);
+void		ft_path_color_ground(t_cub *cub, char **map_tmp);
+void		ft_path_color_sky(t_cub *cub, char **map_tmp);
+void		only_map(t_cub *cub);
 
 // parsing.c //
 
-char	    *ft_copytab(char **map);
-int	        ft_map_tab(t_cub *cub, char *tab);
-int	        verif_character_map(char **map_tmp, t_cub *cub);
-void	    ft_new_map(t_cub *cub, char **map_tmp, int count);
-int	        ft_parsing(char **map, t_cub *cub);
+char		*ft_copytab(char **map);
+int			ft_map_tab(t_cub *cub, char *tab);
+int			verif_character_map(char **map_tmp, t_cub *cub);
+void		ft_new_map(t_cub *cub, char **map_tmp, int count);
+int			ft_parsing(char **map, t_cub *cub);
 
 //// render ////
 
 // cub3d.c //
 
-void	    ft_draw_player(t_cub *cub);
-void	    get_player_angle(t_cub *cub);
-void	    init_text(t_cub *cub);
-void	    init_win(t_cub *cub);
-void	    cub3d(t_cub *cub);
+void		ft_draw_player(t_cub *cub);
+void		get_player_angle(t_cub *cub);
+void		init_text(t_cub *cub);
+void		init_win(t_cub *cub);
+void		cub3d(t_cub *cub);
 
 // draw_map.c //
 
-void	    draw_free_square(t_cub *cub);
-void	    draw_square(t_cub *cub);
-void	    ft_draw_map(t_cub *cub);
-void	    sky_ground(t_cub *cub);
+void		draw_free_square(t_cub *cub);
+void		draw_square(t_cub *cub);
+void		ft_draw_map(t_cub *cub);
+void		sky_ground(t_cub *cub);
 
 // raycast.c //
 
-void	    get_ray_sup(t_cub *cub);
-void	    call_text(t_cub *cub, int i);
-void	    get_data(t_cub *cub, int i);
-void	    get_ray(t_cub *cub, int i);
-void	    raycast(void *param);
+void		get_ray_sup(t_cub *cub);
+void		call_text(t_cub *cub, int i);
+void		get_data(t_cub *cub, int i);
+void		get_ray(t_cub *cub, int i);
+void		raycast(void *param);
 
 // texture.c //
 
-void	    get_texture_east(t_cub *cub, int i);
-void	    get_texture2(t_cub *cub, int i);
-void	    get_texture_north(t_cub *cub, int i);
-void	    get_texture1(t_cub *cub, int i);
-void	    get_dist(t_cub *cub, int i);
+void		get_texture_east(t_cub *cub, int i);
+void		get_texture2(t_cub *cub, int i);
+void		get_texture_north(t_cub *cub, int i);
+void		get_texture1(t_cub *cub, int i);
+void		get_dist(t_cub *cub, int i);
 
 //// utils ////
 
@@ -134,34 +134,38 @@ mlx_color	color(uint32_t color);
 
 // get_next_line.c //
 
-char	    *ft_select_line(char *all);
-char	    *ft_select_rest(char *all);
-char	    *ft_read_line(int fd, char *buf, char *stat);
-char	    *get_next_line(int fd);
+char		*ft_select_line(char *all);
+char		*ft_select_rest(char *all);
+char		*ft_read_line(int fd, char *buf, char *stat);
+char		*get_next_line(int fd);
 
 // ray_utils.c //
 
-void	    get_ray_side(t_cub *cub);
+void		get_ray_side(t_cub *cub);
 
 // separator.c //
 
-int	        ft_number_separator(char *str, char s);
-int	        ft_count_separator(char *path);
+int			ft_number_separator(char *str, char s);
+int			ft_count_separator(char *path);
 
 // utils_parsing_path.c //
 
-void	    ft_verif_rgb(char **rgb, char **map_tmp, t_cub *cub);
-void	    ft_give_path_row(t_cub *cub, char **map_tmp);
-void	    ft_give_path(t_cub *cub, char **map_tmp);
-int	        parse_line(t_cub *cub, char **map_tmp);
-int	        char_in_color(char *s);
+void		ft_verif_rgb(char **rgb, char **map_tmp, t_cub *cub);
+void		ft_give_path_row(t_cub *cub, char **map_tmp);
+void		ft_give_path(t_cub *cub, char **map_tmp);
+int			parse_line(t_cub *cub, char **map_tmp);
+int			char_in_color(char *s);
 
 // utils_parsing.c //
 
-int	        ft_strlen_map(char *str);
-int	        ft_charac_accetable(char str, t_cub *cub, int x, int y);
-int	        ft_error_charac(t_cub *cub);
-char	    **ft_strcopy(char **str, t_cub *cub);
-void	    ft_error_path(char **map_tmp, t_cub *cub, char *error, char **rgb);
+int			ft_strlen_map(char *str);
+int			ft_charac_accetable(char str, t_cub *cub, int x, int y);
+int			ft_error_charac(t_cub *cub);
+char		**ft_strcopy(char **str, t_cub *cub);
+void		ft_error_path(char **map_tmp, t_cub *cub, char *error, char **rgb);
+
+// utils_error_parsing //
+
+int			error_parsing(int x, int y, char **map_tmp, t_cub *cub);
 
 #endif

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+         #
+#    By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 06:04:01 by mdegache          #+#    #+#              #
-#    Updated: 2025/08/21 10:15:14 by mdegache         ###   ########.fr        #
+#    Updated: 2025/08/21 10:33:15 by tcybak           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRC = 	src/main.c\
 		src/utils/ray_utils.c\
 		src/utils/separator.c\
 		src/utils/utils_parsing_path.c\
+		src/utils/utils_error_parsing.c\
 		src/utils/utils_parsing.c\
 
 OBJ_DIR = build
