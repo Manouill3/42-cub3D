@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "mlx_profile.h": "c",
+        "includes.h": "c"
+    }
+}

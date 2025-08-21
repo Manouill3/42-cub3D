@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/17 12:36:25 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/21 09:40:40 by mdegache         ###   ########.fr       */
+/*   Created: 2025/08/21 09:40:07 by mdegache          #+#    #+#             */
+/*   Updated: 2025/08/21 09:40:44 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/includes.h"
 
-mlx_color	color(uint32_t color)
+void	get_ray_side(t_cub *cub)
 {
-	mlx_color	c;
-
-	c.rgba = color;
-	return (c);
+	if (cub->ray->dx > cub->ray->dy)
+	{
+		cub->ray->ray_y += cub->player->stepy;
+		cub->ray->dy += cub->ray->dely;
+		cub->ray->side = 0;
+	}
+	else
+	{
+		cub->ray->ray_x += cub->player->stepx;
+		cub->ray->dx += cub->ray->delx;
+		cub->ray->side = 1;
+	}
 }

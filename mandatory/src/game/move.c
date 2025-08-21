@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/17 10:13:54 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/14 13:20:00 by mdegache         ###   ########.fr       */
+/*   Created: 2025/08/14 13:20:05 by mdegache          #+#    #+#             */
+/*   Updated: 2025/08/21 10:18:03 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	move_forward(t_cub *cub)
 
 	cosx = cos((cub->player->angle % 360) * (PI / 180)) * 0.1;
 	siny = sin((cub->player->angle % 360) * (PI / 180)) * 0.1;
-	tmp_x = cub->player->pos_x + cosx + (0.1f * -(cub->player->angle > 180));
-	tmp_y = cub->player->pos_y + siny + (0.1f * -(cub->player->angle > 180));
+	tmp_x = cub->player->pos_x + cosx;
+	tmp_y = cub->player->pos_y + siny;
 	apply_position(cub->player, cub->map, tmp_x, tmp_y);
 }
 

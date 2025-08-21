@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+         #
+#    By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/09 06:04:01 by mdegache          #+#    #+#              #
-#    Updated: 2025/08/20 23:24:26 by tcybak           ###   ########.fr        #
+#    Updated: 2025/08/21 10:15:14 by mdegache         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,21 +30,23 @@ LIB = includes/libft
 LIBFT = includes/libft/libft.a includes/MacroLibX/libmlx.so
 
 SRC = 	src/main.c\
-		src/game/cub3d.c\
-		src/game/draw_map.c\
-		src/parsing/parsing.c\
+		src/free/ft_free.c\
+		src/game/collision.c\
+		src/game/events.c\
+		src/game/move.c\
 		src/parsing/parsing_map.c\
 		src/parsing/parsing_path.c\
-		src/window/Keybord.c\
-		src/window/events.c\
-		src/window/raycast.c\
-		src/window/Texture.c\
-		src/window/move.c\
-		src/utils/get_next_line.c\
-		src/utils/utils_parsing.c\
-		src/utils/utils_parsing_path.c\
+		src/parsing/parsing.c\
+		src/render/cub3d.c\
+		src/render/draw_map.c\
+		src/render/raycast.c\
+		src/render/texture.c\
 		src/utils/color.c\
-		src/free/ft_free.c
+		src/utils/get_next_line.c\
+		src/utils/ray_utils.c\
+		src/utils/separator.c\
+		src/utils/utils_parsing_path.c\
+		src/utils/utils_parsing.c\
 
 OBJ_DIR = build
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.c=%.o))
@@ -80,4 +82,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re NAME MLX LIBFT OBJ_DIR
