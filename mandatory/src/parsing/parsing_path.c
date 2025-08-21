@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 15:13:18 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/21 10:37:53 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/21 14:18:28 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	ft_path_color_ground(t_cub *cub, char **map_tmp)
 		cub->ground.r = ft_atoi(rgb[0]);
 		cub->ground.g = ft_atoi(rgb[1]);
 		cub->ground.b = ft_atoi(rgb[2]);
+		cub->ground.a = 255;
 		ft_verif_rgb(rgb, map_tmp, cub);
 		if ((ft_atoi(rgb[0]) > 255 || ft_atoi(rgb[0]) < 0)
 			|| (ft_atoi(rgb[1]) > 255 || ft_atoi(rgb[1]) < 0)
@@ -101,6 +102,7 @@ void	ft_path_color_sky(t_cub *cub, char **map_tmp)
 		cub->sky.r = ft_atoi(rgb[0]);
 		cub->sky.g = ft_atoi(rgb[1]);
 		cub->sky.b = ft_atoi(rgb[2]);
+		cub->sky.a = 255;
 		ft_verif_rgb(rgb, map_tmp, cub);
 		if ((ft_atoi(rgb[0]) > 255 || ft_atoi(rgb[0]) < 0)
 			|| (ft_atoi(rgb[1]) > 255 || ft_atoi(rgb[1]) < 0)

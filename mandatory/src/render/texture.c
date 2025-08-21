@@ -6,27 +6,12 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:25:29 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/21 11:06:23 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/21 14:06:45 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/includes.h"
 
-void	get_texture_west(t_cub *cub, int i)
-{
-	cub->ray->tex_x = (int)(cub->ray->wall_y * cub->map->w_w);
-	while (cub->ray->start_y < cub->ray->end_y)
-	{
-		cub->ray->text_pos = cub->ray->text_start + (cub->ray->start_y
-				- cub->ray->save_start_y) * cub->ray->text_step;
-		cub->ray->tex_y = (int)(cub->ray->text_pos * cub->map->h_w);
-		cub->ray->pixel_color = mlx_get_image_pixel(cub->mlx, cub->img[WEST],
-				cub->ray->tex_x, cub->ray->tex_y);
-		mlx_pixel_put(cub->mlx, cub->win->window, i,
-			cub->ray->start_y, cub->ray->pixel_color);
-		cub->ray->start_y++;
-	}
-}
 
 void	get_texture2(t_cub *cub, int i)
 {
@@ -55,6 +40,22 @@ void	get_texture2(t_cub *cub, int i)
 	}
 	else
 		get_texture_west(cub, i);
+}
+
+void	get_texture_west(t_cub *cub, int i)
+{
+	cub->ray->tex_x = (int)(cub->ray->wall_y * cub->map->w_w);
+	while (cub->ray->start_y < cub->ray->end_y)
+	{
+		cub->ray->text_pos = cub->ray->text_start + (cub->ray->start_y
+				- cub->ray->save_start_y) * cub->ray->text_step;
+		cub->ray->tex_y = (int)(cub->ray->text_pos * cub->map->h_w);
+		cub->ray->pixel_color = mlx_get_image_pixel(cub->mlx, cub->img[WEST],
+				cub->ray->tex_x, cub->ray->tex_y);
+		mlx_pixel_put(cub->mlx, cub->win->window, i,
+			cub->ray->start_y, cub->ray->pixel_color);
+		cub->ray->start_y++;
+	}
 }
 
 void	get_texture_north(t_cub *cub, int i)

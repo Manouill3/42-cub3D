@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 14:01:47 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/21 10:29:16 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/08/21 11:34:45 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_give_path_row(t_cub *cub, char **map_tmp)
 	int	y;
 
 	y = cub->pars->y;
-	if (ft_strncmp(map_tmp[y], "EA", 2) == 0)
+	if (ft_strncmp(map_tmp[y], "EA ", 3) == 0)
 	{
 		if (cub->map->e_path != NULL)
 			ft_error_path(map_tmp, cub,
@@ -62,21 +62,21 @@ void	ft_give_path(t_cub *cub, char **map_tmp)
 	int	y;
 
 	y = cub->pars->y;
-	if (ft_strncmp(map_tmp[y], "NO", 2) == 0)
+	if (ft_strncmp(map_tmp[y], "NO ", 3) == 0)
 	{
 		if (cub->map->n_path != NULL)
 			ft_error_path(map_tmp, cub,
 				"Error\nSame Element\n", NULL);
 		cub->map->n_path = ft_path_picture(map_tmp[y] + 2);
 	}
-	else if (ft_strncmp(map_tmp[y], "SO", 2) == 0)
+	else if (ft_strncmp(map_tmp[y], "SO ", 3) == 0)
 	{
 		if (cub->map->s_path != NULL)
 			ft_error_path(map_tmp, cub,
 				"Error\nSame Element\n", NULL);
 		cub->map->s_path = ft_path_picture(map_tmp[y] + 2);
 	}
-	else if (ft_strncmp(map_tmp[y], "WE", 2) == 0)
+	else if (ft_strncmp(map_tmp[y], "WE ", 3) == 0)
 	{
 		if (cub->map->w_path != NULL)
 			ft_error_path(map_tmp, cub,
