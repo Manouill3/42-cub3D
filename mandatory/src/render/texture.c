@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdegache <mdegache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 14:25:29 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/21 14:06:45 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/09/01 10:53:59 by mdegache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/includes.h"
-
 
 void	get_texture2(t_cub *cub, int i)
 {
