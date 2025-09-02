@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:10:33 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/21 11:06:10 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/09/02 16:09:10 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,5 +167,6 @@ void		ft_error_path(char **map_tmp, t_cub *cub, char *error, char **rgb);
 // utils_error_parsing //
 
 int			error_parsing(int x, int y, char **map_tmp, t_cub *cub);
+int			check_error(t_cub *cub, char *tab);
 
 #endif
