@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:26:46 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/20 14:39:07 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/09/02 10:07:43 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ int	ft_error_charac(t_cub *cub)
 {
 	if (cub->map->nb_player > 1)
 	{
-		write(2, "Error too many player\n", 22);
+		write(2, "Error\ntoo many player\n", 22);
 		return (1);
 	}
 	else if (cub->map->nb_player < 1)
 	{
-		write(2, "Error not enough players\n", 25);
+		write(2, "Error\nnot enough players\n", 25);
 		return (1);
 	}
 	return (0);

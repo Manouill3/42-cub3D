@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 10:34:08 by tcybak            #+#    #+#             */
-/*   Updated: 2025/08/21 14:21:07 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/09/02 09:55:34 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,10 @@ int	ft_parsing(char **map, t_cub *cub)
 
 	tab = ft_copytab(map);
 	if (ft_map_tab(cub, tab))
+	{
+		write(2, "Error\nMap not good\n", 18);
 		return (1);
+	}
 	only_map(cub);
 	map_tmp = ft_strcopy(cub->map->map, cub);
 	if (!map_tmp)
@@ -126,7 +129,7 @@ int	ft_parsing(char **map, t_cub *cub)
 	if (flood_fill(map_tmp, cub->player->pos_x, cub->player->pos_y, 0) == 1)
 	{
 		ft_free(map_tmp);
-		write(2, "Error map not good\n", 19);
+		write(2, "Error\nMap not good\n", 18);
 		return (1);
 	}
 	ft_free(map_tmp);

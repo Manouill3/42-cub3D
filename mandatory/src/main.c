@@ -6,7 +6,7 @@
 /*   By: tcybak <tcybak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 06:30:22 by mdegache          #+#    #+#             */
-/*   Updated: 2025/08/21 14:21:47 by tcybak           ###   ########.fr       */
+/*   Updated: 2025/09/02 09:55:26 by tcybak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ int	main(int ac, char **av)
 			return (0);
 		if (ft_parsing(av, cub))
 		{
-			write(2, "Error\nMap not good\n", 18);
 			free_all(cub);
 			return (1);
 		}
